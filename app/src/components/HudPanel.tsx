@@ -6,7 +6,19 @@ import { minutesBetween } from '../engine/sim'
 
 const fmt = (v: number | null, digits = 0) => (v === null || v === undefined ? '---' : v.toFixed(digits))
 
-function Cell({ label, value, unit, color, changed }: { label: string; value: string; unit: string; color: string; changed: boolean }) {
+function Cell({ label, value, unit, color, changed, compact }: { label: string; value: string; unit: string; color: string; changed: boolean; compact: boolean }) {
+  if (compact)
+    return (
+      <div className={`rounded-lg border border-console-line bg-console-panel px-2 py-1 transition-colors ${changed ? 'bg-white/10' : ''}`}>
+        <p className="flex items-baseline justify-between gap-1 text-[10px] text-console-sub">
+          <span className="font-bold tracking-wider">{label}</span>
+          <span>{unit}</span>
+        </p>
+        <p className="seg mt-0.5 text-[19px] font-bold leading-none" style={{ color }}>
+          {value}
+        </p>
+      </div>
+    )
   return (
     <div className={`rounded-xl border border-console-line bg-console-panel px-2 py-1.5 transition-colors ${changed ? 'bg-white/10' : ''}`}>
       <p className="text-[10px] font-bold tracking-wider text-console-sub">{label}</p>
@@ -18,7 +30,8 @@ function Cell({ label, value, unit, color, changed }: { label: string; value: st
   )
 }
 
-export function HudPanel({ hud, clock }: { hud: HudState; clock: string | null }) {
+/** compact: 進行中に上へ固定して出すときの小さい表示（主要4値の文字を小さくし、単位を項目名の横に置く） */
+export function HudPanel({ hud, clock, compact = false }: { hud: HudState; clock: string | null; compact?: boolean }) {
   const prev = useRef<HudState>(hud)
   const [changed, setChanged] = useState<Set<keyof HudState>>(new Set())
 
@@ -39,8 +52,8 @@ export function HudPanel({ hud, clock }: { hud: HudState; clock: string | null }
   const levelColor = hud.level === 'ok' ? 'var(--seg-flow)' : hud.level === 'low' ? 'var(--seg-temp)' : 'var(--seg-map)'
 
   return (
-    <div className="console rounded-2xl border border-console-line p-2.5" aria-label="人工心肺モニター（例）">
-      <div className="flex items-center gap-2 px-1 pb-2 text-[11px] font-bold">
+    <div className={`console rounded-2xl border border-console-line ${compact ? 'p-2' : 'p-2.5'}`} aria-label="人工心肺モニター（例）">
+      <div className={`flex items-center gap-2 px-1 text-[11px] font-bold ${compact ? 'pb-1.5' : 'pb-2'}`}>
         <span className={`h-2 w-2 rounded-full ${hud.cpbStart ? 'bg-[var(--seg-flow)]' : 'bg-console-sub'}`} />
         <span className="tracking-wider text-console-ink">{hud.stage}</span>
         <span className="ml-auto flex gap-2.5 text-console-sub">
@@ -50,10 +63,10 @@ export function HudPanel({ hud, clock }: { hud: HudState; clock: string | null }
         </span>
       </div>
       <div className="grid grid-cols-4 gap-1.5">
-        <Cell label="FLOW" value={fmt(hud.flow, 1)} unit="L/min" color="var(--seg-flow)" changed={changed.has('flow')} />
-        <Cell label="MAP" value={fmt(hud.map)} unit="mmHg" color="var(--seg-map)" changed={changed.has('map')} />
-        <Cell label="TEMP" value={fmt(hud.temp, 1)} unit="°C" color="var(--seg-temp)" changed={changed.has('temp')} />
-        <Cell label="ACT" value={fmt(hud.act)} unit="sec" color="var(--seg-act)" changed={changed.has('act')} />
+        <Cell label="FLOW" value={fmt(hud.flow, 1)} unit="L/min" color="var(--seg-flow)" changed={changed.has('flow')} compact={compact} />
+        <Cell label="MAP" value={fmt(hud.map)} unit="mmHg" color="var(--seg-map)" changed={changed.has('map')} compact={compact} />
+        <Cell label="TEMP" value={fmt(hud.temp, 1)} unit="°C" color="var(--seg-temp)" changed={changed.has('temp')} compact={compact} />
+        <Cell label="ACT" value={fmt(hud.act)} unit="sec" color="var(--seg-act)" changed={changed.has('act')} compact={compact} />
       </div>
       <div className="mt-1.5 grid grid-cols-4 gap-1.5 text-[11px]">
         <div className={`rounded-lg border border-console-line bg-console-panel px-2 py-1 ${changed.has('svo2') ? 'bg-white/10' : ''}`}>

@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation, useParams } from 'wouter'
 import { X, Trophy, RotateCcw, ArrowLeft } from 'lucide-react'
 import { Bar, Button, Card } from '../components/ui'
@@ -27,6 +27,10 @@ export default function Drill() {
   const [idx, setIdx] = useState(0)
   const [answers, setAnswers] = useState<{ q: DrillQ; ok: boolean }[]>([])
   const answered = useRef(false)
+  // 次の問題は先頭から見せる（画面は替わらず中身だけ替わるので、前の問題のスクロール位置が残る）
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [idx, seed])
   const gradePhrase = useProgress((s) => s.gradePhrase)
   const addXp = useProgress((s) => s.addXp)
   const bump = useProgress((s) => s.bump)

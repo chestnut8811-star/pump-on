@@ -87,7 +87,8 @@ function Shell() {
           1画面分スクロールしたところでヘッダーが流れてしまうので、内容の高さを持つ div で包む */}
       {fullHeight ? routes : <div>{routes}</div>}
       {!immersive && <TabBar />}
-      <ToastHost />
+      {/* ドリル・シミュレーターなどの途中はバッジ等の通知をためておき、画面を出たら表示する */}
+      <ToastHost hold={immersive} />
       <UpdatePrompt />
       {!onboarded && <Onboarding />}
     </>

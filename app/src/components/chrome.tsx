@@ -1,10 +1,10 @@
 // 画面の枠: ヘッダー、下のタブバー、通知
 
-import type { ReactNode } from 'react'
+import { useEffect, type ReactNode } from 'react'
 import { Link, useLocation } from 'wouter'
 import { ChevronLeft, House, Map, RotateCcw, BarChart3, Award, Target, Info, AlertTriangle } from 'lucide-react'
 import { PumpRotor } from './brand'
-import { useUi } from '../store/ui'
+import { useUi, type Toast } from '../store/ui'
 
 /** 濃紺のヘッダー（ステータスバーの下まで伸ばす） */
 export function ScreenHeader({
@@ -96,27 +96,42 @@ export function TabBar() {
   )
 }
 
-export function ToastHost() {
+/**
+ * 通知。hold のあいだ（ドリル・シミュレーターなど、タブバーを隠した画面の途中）は表示せずにためておき、
+ * その画面を出たときに表示する（上部のヘッダーや閉じるボタンに重ねないため）
+ */
+export function ToastHost({ hold = false }: { hold?: boolean }) {
   const toasts = useUi((s) => s.toasts)
-  const dismiss = useUi((s) => s.dismiss)
+  if (hold || toasts.length === 0) return null
   return (
     <div className="pointer-events-none fixed inset-x-0 top-0 z-50 flex flex-col items-center gap-2 px-4 pt-[calc(env(safe-area-inset-top)+0.75rem)]">
       {toasts.map((t) => (
-        <button
-          key={t.id}
-          type="button"
-          onClick={() => dismiss(t.id)}
-          className="animate-pop pointer-events-auto mt-2 flex w-full max-w-md items-center gap-3 rounded-2xl bg-navy px-4 py-3 text-left text-white shadow-card"
-        >
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-[#3fd3c3]">
-            {t.kind === 'badge' ? <Award size={20} /> : t.kind === 'goal' ? <Target size={20} /> : t.kind === 'error' ? <AlertTriangle size={20} /> : <Info size={20} />}
-          </span>
-          <span className="min-w-0">
-            <span className="block text-sm font-bold">{t.title}</span>
-            {t.body && <span className="block text-xs text-white/70">{t.body}</span>}
-          </span>
-        </button>
+        <ToastItem key={t.id} toast={t} />
       ))}
     </div>
+  )
+}
+
+function ToastItem({ toast: t }: { toast: Toast }) {
+  const dismiss = useUi((s) => s.dismiss)
+  // 表示した時点から数えて消す
+  useEffect(() => {
+    const timer = setTimeout(() => dismiss(t.id), 3600)
+    return () => clearTimeout(timer)
+  }, [t.id, dismiss])
+  return (
+    <button
+      type="button"
+      onClick={() => dismiss(t.id)}
+      className="animate-pop pointer-events-auto mt-2 flex w-full max-w-md items-center gap-3 rounded-2xl bg-navy px-4 py-3 text-left text-white shadow-card"
+    >
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-[#3fd3c3]">
+        {t.kind === 'badge' ? <Award size={20} /> : t.kind === 'goal' ? <Target size={20} /> : t.kind === 'error' ? <AlertTriangle size={20} /> : <Info size={20} />}
+      </span>
+      <span className="min-w-0">
+        <span className="block text-sm font-bold">{t.title}</span>
+        {t.body && <span className="block text-xs text-white/70">{t.body}</span>}
+      </span>
+    </button>
   )
 }

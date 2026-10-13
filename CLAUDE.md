@@ -9,6 +9,7 @@
 - 検証: `cd app && npm run check`（型チェック・lint・テスト・ビルド）。教材を触ったら最低限 `npx vitest run tests/content.test.ts`。
 - node は `/usr/local/bin/node`。dev/preview は 127.0.0.1 で待ち受ける（iOS シミュレータの Safari は IPv4 で繋ぐため。`localhost` だと IPv6 のみになることがある）。
 - iCloud 同期下: `node_modules` は `node_modules.nosync` への symlink。`npm install` 後は必ず `bash scripts/fix-nosync.sh`。
+- 暗い画面はシミュレーター（`.console`）だけ。そこで共通部品を使うときは暗い画面用の指定を付ける（`NoteList dark`・`SpeakPanel dark`・`AudioButton tone="dark"` など）。明るい画面用の `text-ink` のままだと、ライト表示で紺の文字が暗い背景に乗って読めない（ダーク表示では気づけないので、ライト表示で確認する）。
 
 ## 教材のルール（要点）
 

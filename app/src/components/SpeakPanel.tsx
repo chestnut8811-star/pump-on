@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Check, Keyboard, Mic, RotateCcw, Square, Volume2, X } from 'lucide-react'
 import { recognitionSupported, listenOnce, recognitionErrorJa, type ListenHandle } from '../engine/recognition'
 import { recorderSupported, startRecording, prepareMic, micReady, playUrl, releaseMic, stopPlayback, type RecorderHandle } from '../engine/recorder'
-import { betterMatch, matchUtterance, type MatchResult } from '../engine/match'
+import { CLOSE_SCORE, betterMatch, matchUtterance, type MatchResult } from '../engine/match'
 import { stopSpeech } from '../engine/speech'
 import { stopAmbient } from '../engine/sfx'
 import { useSettings } from '../store/settings'
@@ -55,6 +55,15 @@ export function SpeakPanel({ target, tts, keywords, accept, revealTarget = false
   const listenRef = useRef<ListenHandle | null>(null)
   const recRef = useRef<RecorderHandle | null>(null)
   const mounted = useRef(true)
+  const formRef = useRef<HTMLFormElement>(null)
+  /** 「入力」に切り替えたときだけ、入力欄が画面に入るまでスクロールする */
+  const revealForm = useRef(false)
+
+  useEffect(() => {
+    if (mode !== 'type' || !revealForm.current) return
+    revealForm.current = false
+    formRef.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
+  }, [mode])
 
   // 画面を離れたら、認識・録音・録音の再生を止め、マイクを解放する
   // （マイクを開いたままだと、iPhone では読み上げの音量や出力先が変わることがある）
@@ -233,6 +242,7 @@ export function SpeakPanel({ target, tts, keywords, accept, revealTarget = false
                   releaseMic()
                   if (step === 'ready') setStep('idle')
                 }
+                if (o.v === 'type' && mode !== 'type') revealForm.current = true
                 setMode(o.v)
                 setError(null)
               }}
@@ -317,31 +327,35 @@ export function SpeakPanel({ target, tts, keywords, accept, revealTarget = false
       {/* キーボードの音声入力・文字入力で判定 */}
       {mode === 'type' && step !== 'scored' && (
         <form
-          className="mt-3"
+          ref={formRef}
+          className="mt-3 scroll-mb-[calc(env(safe-area-inset-bottom)+1rem)]"
           onSubmit={(e) => {
             e.preventDefault()
             score([typed])
           }}
         >
-          <input
-            type="text"
-            inputMode="text"
-            lang="en"
-            autoCapitalize="off"
-            autoCorrect="off"
-            spellCheck={false}
-            enterKeyHint="done"
-            value={typed}
-            onChange={(e) => setTyped(e.target.value)}
-            placeholder="英語で入力（キーボードのマイクで音声入力も可）"
-            className={`en w-full rounded-xl px-3 py-3 outline-none ${dark ? 'bg-white/10 text-white placeholder:text-white/40' : 'border border-line bg-card text-ink'}`}
-          />
+          {/* 判定ボタンは入力欄の横に置く（キーボードを出したとき、入力欄の下にあるとキーボードに隠れる） */}
+          <div className="flex gap-2">
+            <input
+              type="text"
+              inputMode="text"
+              lang="en"
+              autoCapitalize="off"
+              autoCorrect="off"
+              spellCheck={false}
+              enterKeyHint="done"
+              value={typed}
+              onChange={(e) => setTyped(e.target.value)}
+              placeholder="英語で入力"
+              className={`en min-w-0 flex-1 rounded-xl px-3 py-3 outline-none ${dark ? 'bg-white/10 text-white placeholder:text-white/40' : 'border border-line bg-card text-ink'}`}
+            />
+            <button type="submit" disabled={!typed.trim()} className="min-h-12 shrink-0 rounded-xl bg-brand px-4 font-bold text-white disabled:opacity-40">
+              判定
+            </button>
+          </div>
           <p className={`mt-1.5 text-[11px] leading-relaxed ${sub}`}>
             キーボードを英語に切り替えてマイクキーを押すと、話した英語が入力されます。
           </p>
-          <button type="submit" disabled={!typed.trim()} className="mt-2 min-h-12 w-full rounded-xl bg-brand font-bold text-white disabled:opacity-40">
-            判定する
-          </button>
         </form>
       )}
 
@@ -383,7 +397,7 @@ export function SpeakPanel({ target, tts, keywords, accept, revealTarget = false
             </p>
           )}
           <p className={`mt-3 text-sm font-bold ${result.pass ? 'text-ok' : 'text-warn'}`}>
-            {result.pass ? '伝わります！' : 'おしい。キーワードを確認してもう一度'}（{result.score}点）
+            {result.pass ? '伝わります！' : result.score >= CLOSE_SCORE ? 'おしい。キーワードを確認してもう一度' : 'お手本を聞いて、もう一度'}（{result.score}点）
           </p>
           <div className="mt-3 grid grid-cols-2 gap-2">
             <button

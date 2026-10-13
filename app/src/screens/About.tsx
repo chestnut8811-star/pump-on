@@ -17,7 +17,7 @@ export default function About() {
         <Card className="hero-grad mt-4 p-5 text-white">
           <Wordmark size={24} />
           <p className="mt-3 text-sm leading-relaxed text-white/85">
-            人工心肺（CPB）業務に携わる臨床工学技士のための、手術の流れに沿った英会話トレーニングです。聞く・選ぶ・話す・流れの中で会話する、の4段階で練習します。
+            人工心肺（CPB）業務に携わる臨床工学技士のための、手術の流れに沿った英会話トレーニングです。「聞く」「選ぶ」「話す」「流れの中で会話する」の4段階で練習します。
           </p>
           <p className="num mt-3 text-xs text-white/60">version {__APP_VERSION__}</p>
         </Card>

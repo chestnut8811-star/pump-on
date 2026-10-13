@@ -203,7 +203,7 @@ export default function Settings() {
             options={[
               { value: '30', label: '30 XP（軽め）' },
               { value: '50', label: '50 XP' },
-              { value: '100', label: '100 XP（しっかり）' },
+              { value: '100', label: '100 XP（多め）' },
             ]}
           />
         </Section>

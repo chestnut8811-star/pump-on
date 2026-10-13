@@ -146,6 +146,9 @@ export interface MatchResult {
   best: string
 }
 
+/** 不合格のうち「おしい」と表示する点数の下限（表示の文言だけに使い、合否には使わない） */
+export const CLOSE_SCORE = 50
+
 const OPPOSITE = new Map([
   ['on', 'off'],
   ['off', 'on'],

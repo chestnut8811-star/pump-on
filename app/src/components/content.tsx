@@ -72,7 +72,11 @@ const NOTE: Record<NoteKind, { label: string; tone: Tone; icon: ReactNode }> = {
   tip: { label: 'コツ', tone: 'brand', icon: <Lightbulb size={14} /> },
 }
 
-export function NoteList({ notes, className = '' }: { notes?: Note[]; className?: string }) {
+/**
+ * 注記の一覧。シミュレーターの暗い画面では dark を付ける
+ * （付けないと、ライト表示では紺の本文が暗い背景に乗って読めない）
+ */
+export function NoteList({ notes, className = '', dark = false }: { notes?: Note[]; className?: string; dark?: boolean }) {
   if (!notes?.length) return null
   return (
     <ul className={`space-y-2 ${className}`}>
@@ -84,9 +88,9 @@ export function NoteList({ notes, className = '' }: { notes?: Note[]; className?
               {m.icon}
               {m.label}
             </Pill>
-            <span className="text-ink">
+            <span className={dark ? 'text-console-ink' : 'text-ink'}>
               {n.text}
-              {n.sources?.length ? <SourceRefs ids={n.sources} /> : null}
+              {n.sources?.length ? <SourceRefs ids={n.sources} dark={dark} /> : null}
             </span>
           </li>
         )
@@ -95,9 +99,9 @@ export function NoteList({ notes, className = '' }: { notes?: Note[]; className?
   )
 }
 
-export function SourceRefs({ ids }: { ids: SourceId[] }) {
+export function SourceRefs({ ids, dark = false }: { ids: SourceId[]; dark?: boolean }) {
   return (
-    <span className="ml-1 text-[11px] text-faint">
+    <span className={`ml-1 text-[11px] ${dark ? 'text-console-sub' : 'text-faint'}`}>
       <BookOpen size={11} className="mr-0.5 inline" />
       {ids.map((id) => SOURCES[id]?.org ?? id).join(' / ')}
     </span>

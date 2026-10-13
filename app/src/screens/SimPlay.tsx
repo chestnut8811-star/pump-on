@@ -17,13 +17,14 @@ import { XP } from '../engine/xp'
 import { sfx, startAmbient, stopAmbient, unlockAudio } from '../engine/sfx'
 import { stopSpeech, unlockSpeech } from '../engine/speech'
 import { shuffle } from '../engine/numbers'
+import { CLOSE_SCORE } from '../engine/match'
 import NotFound from './NotFound'
 
 type LogEntry =
   | { k: 'narr'; text: string }
   | { k: 'line'; line: DialogueLine; beat: number; idx: number }
   | { k: 'mine'; text: string; ok: boolean | null }
-  | { k: 'fb'; beat: number; ok: boolean; timedOut: boolean; why: string; model?: string; modelJa?: string; modelTts?: string; task: SimTask }
+  | { k: 'fb'; beat: number; ok: boolean; timedOut: boolean; why: string; model?: string; modelJa?: string; modelTts?: string; task: SimTask; score?: number }
 
 type Stage = 'intro' | 'lines' | 'task' | 'resolved' | 'idle' | 'done'
 
@@ -189,7 +190,8 @@ export default function SimPlay() {
     void runBeat(range[0])
   }
 
-  function resolve(ok: boolean, timedOut: boolean, chosenText: string | null) {
+  /** score は発話を自動判定したときの点数（フィードバックの見出しに使う） */
+  function resolve(ok: boolean, timedOut: boolean, chosenText: string | null, score?: number) {
     if (!c || !beat?.task || resolvedRef.current) return
     resolvedRef.current = true
     const task = beat.task
@@ -216,7 +218,7 @@ export default function SimPlay() {
     setLog((l) => [
       ...l,
       ...(chosenText ? [{ k: 'mine', text: chosenText, ok } as LogEntry] : []),
-      { k: 'fb', beat: beatIdx, ok, timedOut, why, model, modelJa, modelTts, task },
+      { k: 'fb', beat: beatIdx, ok, timedOut, why, model, modelJa, modelTts, task, score },
     ])
     setStage('resolved')
     const my = runId.current
@@ -305,7 +307,7 @@ export default function SimPlay() {
           </p>
           {c.notes?.length ? (
             <div className="mt-3 rounded-xl bg-console-panel p-3">
-              <NoteList notes={c.notes} />
+              <NoteList dark notes={c.notes} />
             </div>
           ) : null}
           <button
@@ -417,7 +419,8 @@ export default function SimPlay() {
               </button>
             )}
           </div>
-          {hud && <HudPanel hud={hud} clock={clock} />}
+          {/* 進行中は上に固定されるので、課題の入力欄が隠れないよう小さく表示する */}
+          {hud && <HudPanel hud={hud} clock={clock} compact />}
         </div>
       </div>
 
@@ -505,7 +508,7 @@ export default function SimPlay() {
                   accept={task.accept}
                   revealTarget={mode === 'guided'}
                   rateMul={meta.rate}
-                  onResult={(r) => resolve(r.ok, false, r.transcript ?? null)}
+                  onResult={(r) => resolve(r.ok, false, r.transcript ?? null, r.score)}
                 />
               </div>
             )}
@@ -550,6 +553,15 @@ export default function SimPlay() {
       )}
     </div>
   )
+}
+
+/** フィードバックの見出し。選択の不正解は「ちがいます」、発話は点数で「おしい」とそれ以外を分ける */
+function fbLabel(e: Extract<LogEntry, { k: 'fb' }>): string {
+  if (e.ok) return 'Good!'
+  if (e.timedOut) return '時間切れ'
+  if (e.task.kind !== 'speak') return 'ちがいます'
+  // 録音の自己評価（「もう一回」）は点数がない
+  return e.score !== undefined && e.score >= CLOSE_SCORE ? 'おしい' : 'お手本を確認'
 }
 
 function LogView({ e, showEn, showJa, speaking }: { e: LogEntry; showEn: boolean; showJa: boolean; speaking: boolean }) {
@@ -599,7 +611,7 @@ function LogView({ e, showEn, showJa, speaking }: { e: LogEntry; showEn: boolean
     <div className={`animate-pop rounded-2xl border p-3.5 ${e.ok ? 'border-[var(--seg-flow)]/50 bg-[var(--seg-flow)]/8' : 'border-[var(--seg-map)]/50 bg-[var(--seg-map)]/8'}`}>
       <p className={`flex items-center gap-1.5 font-extrabold ${e.ok ? 'text-[var(--seg-flow)]' : 'text-[var(--seg-map)]'}`}>
         {e.ok ? <Check size={18} /> : <X size={18} />}
-        {e.ok ? 'Good!' : e.timedOut ? '時間切れ' : 'おしい'}
+        {fbLabel(e)}
       </p>
       {e.why && <p className="mt-1 text-[13px] leading-relaxed text-console-ink/90">{e.why}</p>}
       {t.kind === 'catch' && (
@@ -627,7 +639,7 @@ function LogView({ e, showEn, showJa, speaking }: { e: LogEntry; showEn: boolean
           ))}
         </ul>
       ) : null}
-      {phrase?.notes?.length ? <NoteList className="mt-2" notes={phrase.notes.filter((n) => n.kind !== 'tip').slice(0, 2)} /> : null}
+      {phrase?.notes?.length ? <NoteList dark className="mt-2" notes={phrase.notes.filter((n) => n.kind !== 'tip').slice(0, 2)} /> : null}
     </div>
   )
 }

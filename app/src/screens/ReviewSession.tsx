@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation, useSearch } from 'wouter'
 import { X, Trophy, ArrowLeft } from 'lucide-react'
 import { Bar, Button, Card } from '../components/ui'
@@ -39,6 +39,10 @@ export default function ReviewSession() {
   const [idx, setIdx] = useState(0)
   const [okCount, setOkCount] = useState(0)
   const answered = useRef(false)
+  // 次の問題は先頭から見せる（画面は替わらず中身だけ替わるので、前の問題のスクロール位置が残る）
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [idx])
 
   const onAnswer = useCallback(
     (ok: boolean) => {
