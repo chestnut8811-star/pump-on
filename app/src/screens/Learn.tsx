@@ -1,9 +1,10 @@
 import { useLocation } from 'wouter'
-import { AlertTriangle, BookA, ChevronRight, Hash, Sparkles } from 'lucide-react'
+import { AlertTriangle, BookA, ChevronRight, Hash, ListOrdered, Sparkles } from 'lucide-react'
 import { ScreenHeader, Page } from '../components/chrome'
 import { Card, Ring, Section } from '../components/ui'
 import { PHASES, phrasesOf, dialoguesOf } from '../content'
 import { FLOW_PHASES, TROUBLE_PHASES } from '../content/phase-ids'
+import { FLOW_SCRIPT } from '../content/flow-script'
 import { useProgress } from '../store/progress'
 import { mastery } from '../engine/srs'
 import type { Phase } from '../content/types'
@@ -37,6 +38,18 @@ export default function Learn() {
                 <p className="truncate text-xs text-sub">{basics.summary}</p>
               </div>
               <Ring value={m(basics)} size={36} stroke={4} />
+            </div>
+          </Card>
+          <Card onClick={() => navigate('/flow')} className="mt-2.5">
+            <div className="flex items-center gap-3 p-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-brand-ink">
+                <ListOrdered size={22} />
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="font-bold">会話リスト（流れで一覧）</p>
+                <p className="text-xs text-sub">開始前からプロタミンまでの {FLOW_SCRIPT.reduce((n, s) => n + s.ids.length, 0)} 文を、英語・日本語・音声で</p>
+              </div>
+              <ChevronRight size={18} className="text-faint" />
             </div>
           </Card>
         </Section>

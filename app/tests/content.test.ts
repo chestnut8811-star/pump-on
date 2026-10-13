@@ -1,11 +1,12 @@
 // 教材の整合性テスト。執筆ルール docs/content-guidelines.md を機械的に確かめる。
 import { describe, expect, it } from 'vitest'
 import { CASES, DIALOGUES, GLOSSARY, PHASES, PHRASES, PHRASE_BY_ID } from '../src/content'
-import { ALL_PHASES } from '../src/content/phase-ids'
+import { ALL_PHASES, FLOW_PHASES } from '../src/content/phase-ids'
 import { SOURCES } from '../src/content/sources'
 import type { HudState, PhaseId } from '../src/content/types'
 import { canonicalTokens, matchUtterance } from '../src/engine/match'
 import { catchLabel } from '../src/engine/drills'
+import { FLOW_SCRIPT } from '../src/content/flow-script'
 
 const PREFIX: Record<PhaseId, string> = {
   basics: 'bas',
@@ -156,6 +157,19 @@ describe('症例（シミュレーター）', () => {
           for (const k of t.keywords) expect(containsTokens(t.target, k), `${where}: keyword「${k}」が target にない`).toBe(true)
         }
       }
+    }
+  })
+})
+
+describe('会話リスト', () => {
+  it('手術の流れのシーン順に、実在するフレーズを重複なく並べている（トラブル・基本は入れない）', () => {
+    expect(FLOW_SCRIPT.map((s) => s.phase)).toEqual(FLOW_PHASES)
+    const ids = FLOW_SCRIPT.flatMap((s) => s.ids)
+    expect(new Set(ids).size).toBe(ids.length)
+    for (const id of ids) {
+      const p = PHRASE_BY_ID[id]
+      expect(p, id).toBeDefined()
+      expect(FLOW_PHASES, `${id}: 手術の流れのフレーズではない`).toContain(p.phase)
     }
   })
 })

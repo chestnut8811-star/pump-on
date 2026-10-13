@@ -1,6 +1,6 @@
 # Pump On ! 教材 監修用一覧
 
-書き出し日: 2026-10-12 ／ フレーズ 161・会話 34・症例 3・用語 69
+書き出し日: 2026-10-13 ／ フレーズ 161・会話 34・症例 3・用語 69
 
 判定は content-review.csv の「判定」「監修コメント」欄に記入してください。確定した項目だけ、教材ファイルの status を reviewed に変更します。
 
@@ -134,10 +134,10 @@
   - 言い方の幅: Please start bypass. / Go on bypass.
   - 返答: We're going on bypass. / Full flow.
   - 注記: [コツ] 米国の手術録音では "Start bypass." への応答が "Full flow."（目標流量に到達）でした。開始の宣言と到達の宣言を分けて言います。 / [施設差] 日本では、臨床工学技士は医師の具体的な指示を受けて人工心肺を操作します（臨床工学技士法38条）。指示を受けたら、動作を声に出して返します。
-- **ini-03** あなた（臨床工学技士）→全員｜**On bypass at 9:20.**｜9時20分、体外循環を開始しました。｜出典未確認｜要確認を含む
-  - 言い方の幅: We went on bypass at 9:20.
-  - 返答: On bypass at 9:20. Got it.
-  - 注記: [要確認] 開始時刻を口頭で伝える決まった言い回しは、出典で確認できていません。 / [コツ] 時刻は "nine twenty" のように区切って読みます。
+- **ini-03** あなた（臨床工学技士）→全員｜**On bypass at 9:08.**｜9時08分、体外循環を開始しました。｜出典未確認｜要確認を含む
+  - 言い方の幅: We went on bypass at 9:08.
+  - 返答: On bypass at 9:08. Got it.
+  - 注記: [要確認] 開始時刻を口頭で伝える決まった言い回しは、出典で確認できていません。 / [コツ] 時刻は "nine oh eight" のように区切って読みます（分の 0 は "oh"）。
 - **ini-04** 麻酔科医→あなた（臨床工学技士）｜**Let me know when you get to full flow.**｜フルフローになったら教えて。｜動画・報告で確認｜AI下書き・未監修
   - 言い方の幅: Tell me when you reach full flow.
   - 返答: Will do. I'll tell you at full flow.
@@ -262,9 +262,9 @@
   - 言い方の幅: The flow is back up. / Clamp on. Coming back up.
   - 返答: Back up. Thank you.
   - 注記: [コツ] 「下げる → 遮断 → 戻す」を必ず対で復唱します。黙って戻すと、外科医は戻ったかどうか分かりません。
-- **xcl-08** あなた（臨床工学技士）→全員｜**Clamp on at 9:28.**｜9時28分、遮断開始です。｜出典未確認｜要確認を含む
-  - 言い方の幅: The clamp went on at 9:28.
-  - 返答: Clamp on at 9:28. Got it.
+- **xcl-08** あなた（臨床工学技士）→全員｜**Clamp on at 9:21.**｜9時21分、遮断開始です。｜出典未確認｜要確認を含む
+  - 言い方の幅: The clamp went on at 9:21.
+  - 返答: Clamp on at 9:21. Got it.
   - 注記: [要確認] 遮断時刻を口頭で伝える決まった言い回しは確認できていません。記録の書き方（"10:14 XCLAMP on"）は豪州・NZの報告で確認済みです。
 - **xcl-09** あなた（臨床工学技士）→外科医｜**Clamp time is 45 minutes.**｜遮断時間は45分です。｜出典未確認｜要確認を含む
   - 言い方の幅: The clamp has been on for 45 minutes. / We've been clamped for 45 minutes.

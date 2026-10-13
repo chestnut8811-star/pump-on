@@ -21,11 +21,14 @@ import Settings from './screens/Settings'
 import About from './screens/About'
 import Glossary from './screens/Glossary'
 import Numbers from './screens/Numbers'
+import FlowList from './screens/FlowList'
 import Onboarding from './screens/Onboarding'
 import NotFound from './screens/NotFound'
 
 /** タブバーを隠す没入型の画面 */
 const IMMERSIVE = [/^\/drill\//, /^\/sim\/[^/]+/, /^\/review\/session/, /^\/numbers/, /^\/dialogue\//]
+// 背景を画面いっぱいに塗る全画面表示（min-h-full で #root の高さを使う）。これ以外の画面は div で包む
+const FULL_HEIGHT = [/^\/drill\//, /^\/sim\/[^/]+/, /^\/review\/session/, /^\/numbers/]
 
 function Shell() {
   const [path] = useLocation()
@@ -54,27 +57,35 @@ function Shell() {
   }, [path])
 
   const immersive = IMMERSIVE.some((re) => re.test(path))
+  const fullHeight = FULL_HEIGHT.some((re) => re.test(path))
+
+  const routes = (
+    <Switch>
+      <Route path="/" component={Home} />
+      <Route path="/learn" component={Learn} />
+      <Route path="/phase/:id" component={PhaseScreen} />
+      <Route path="/phase/:id/:tab" component={PhaseScreen} />
+      <Route path="/dialogue/:id" component={DialogueScreen} />
+      <Route path="/drill/:phase" component={Drill} />
+      <Route path="/sim" component={SimList} />
+      <Route path="/sim/:id" component={SimPlay} />
+      <Route path="/review" component={Review} />
+      <Route path="/review/session" component={ReviewSession} />
+      <Route path="/progress" component={Progress} />
+      <Route path="/settings" component={Settings} />
+      <Route path="/about" component={About} />
+      <Route path="/glossary" component={Glossary} />
+      <Route path="/numbers" component={Numbers} />
+      <Route path="/flow" component={FlowList} />
+      <Route component={NotFound} />
+    </Switch>
+  )
 
   return (
     <>
-      <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/learn" component={Learn} />
-        <Route path="/phase/:id" component={PhaseScreen} />
-        <Route path="/phase/:id/:tab" component={PhaseScreen} />
-        <Route path="/dialogue/:id" component={DialogueScreen} />
-        <Route path="/drill/:phase" component={Drill} />
-        <Route path="/sim" component={SimList} />
-        <Route path="/sim/:id" component={SimPlay} />
-        <Route path="/review" component={Review} />
-        <Route path="/review/session" component={ReviewSession} />
-        <Route path="/progress" component={Progress} />
-        <Route path="/settings" component={Settings} />
-        <Route path="/about" component={About} />
-        <Route path="/glossary" component={Glossary} />
-        <Route path="/numbers" component={Numbers} />
-        <Route component={NotFound} />
-      </Switch>
+      {/* sticky のヘッダーは親の高さの中でしか止まらない。#root（画面1枚分の高さ）の直下だと、
+          1画面分スクロールしたところでヘッダーが流れてしまうので、内容の高さを持つ div で包む */}
+      {fullHeight ? routes : <div>{routes}</div>}
       {!immersive && <TabBar />}
       <ToastHost />
       <UpdatePrompt />

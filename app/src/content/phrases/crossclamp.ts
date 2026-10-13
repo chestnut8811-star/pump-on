@@ -160,13 +160,13 @@ export const phrases: Phrase[] = [
     phase: 'crossclamp',
     speaker: 'perfusionist',
     to: 'all',
-    en: 'Clamp on at 9:28.',
-    ja: '9時28分、遮断開始です。',
+    en: 'Clamp on at 9:21.',
+    ja: '9時21分、遮断開始です。',
     when: '遮断した時刻を記録し、麻酔科医などチームに伝えて時刻をそろえるとき。',
-    variants: [{ en: 'The clamp went on at 9:28.', register: 'simple' }],
-    replies: [{ role: 'anesthesiologist', en: 'Clamp on at 9:28. Got it.', ja: '遮断9時28分、了解。' }],
+    variants: [{ en: 'The clamp went on at 9:21.', register: 'simple' }],
+    replies: [{ role: 'anesthesiologist', en: 'Clamp on at 9:21. Got it.', ja: '遮断9時21分、了解。' }],
     keywords: [
-      { en: '9:28', ja: '9時28分', kind: 'time' },
+      { en: '9:21', ja: '9時21分', kind: 'time' },
       { en: 'Clamp on', ja: '遮断', kind: 'term' },
     ],
     notes: [

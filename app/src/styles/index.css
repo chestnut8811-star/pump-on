@@ -140,6 +140,13 @@ body,
   height: 100%;
 }
 
+/* iOS のホーム画面アプリ（viewport-fit=cover）では、% の高さの基準が画面より上のセーフエリアの分だけ低い（iPhone 17 で 812pt／画面 874pt）。
+   文書がその高さに収まってスクロールできないと、表示領域ごと 812pt に縮み、position:fixed; bottom:0 のタブバーが下端から浮く。
+   #root を画面いっぱいの高さ（100lvh）以上にして、縮んだ状態に入らないようにする */
+#root {
+  min-height: 100lvh;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;

@@ -56,7 +56,7 @@ export function Page({ children, tabbed = true, className = '' }: { children: Re
 
 const TABS = [
   { to: '/', label: 'ホーム', icon: House, match: (p: string) => p === '/' },
-  { to: '/learn', label: '学ぶ', icon: Map, match: (p: string) => p.startsWith('/learn') || p.startsWith('/phase') || p.startsWith('/glossary') || p.startsWith('/numbers') },
+  { to: '/learn', label: '学ぶ', icon: Map, match: (p: string) => p.startsWith('/learn') || p.startsWith('/phase') || p.startsWith('/glossary') || p.startsWith('/numbers') || p.startsWith('/flow') },
   { to: '/sim', label: 'シミュレーター', icon: null, match: (p: string) => p.startsWith('/sim') },
   { to: '/review', label: '復習', icon: RotateCcw, match: (p: string) => p.startsWith('/review') },
   { to: '/progress', label: '記録', icon: BarChart3, match: (p: string) => p.startsWith('/progress') || p.startsWith('/settings') || p.startsWith('/about') },
