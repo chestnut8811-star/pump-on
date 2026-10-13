@@ -1,0 +1,701 @@
+# Pump On ! 教材 監修用一覧
+
+書き出し日: 2026-10-12 ／ フレーズ 161・会話 34・症例 3・用語 69
+
+判定は content-review.csv の「判定」「監修コメント」欄に記入してください。確定した項目だけ、教材ファイルの status を reviewed に変更します。
+
+## 0. 手術室英語の基本（OR Communication Basics）
+
+- **bas-01** あなた（臨床工学技士）→麻酔科医｜**Anesthesia, just verifying the ventilation is off.**｜麻酔科、換気が止まっているか確認させてください。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Is the ventilator off? / Can you confirm the lungs are off?
+  - 返答: Ventilation's off.
+  - 注記: [コツ] 相手を役職名で呼んでから話すと、誰への確認かがはっきりします。 / [コツ] "vent" は人工呼吸器のこともLVベントのこともあるので、"ventilation" "lungs" と言うと確実です。
+- **bas-02** あなた（臨床工学技士）→外科医｜**One moment.**｜少しお待ちください。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Just a moment, please. / One moment. The ACT is 400 and rising.
+  - 返答: Let me know when you're ready.
+  - 注記: [コツ] 待ってほしいときは「待って」だけでなく、理由（ACTの値など）を続けると相手が判断できます。
+- **bas-03** 外科医→あなた（臨床工学技士）｜**Everything looking okay?**｜（ポンプ側は）問題ない？｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Is everything okay? / How's your bypass?
+  - 返答: Everything's looking good. / Bypass is good. My venous return looks good.
+  - 注記: [コツ] 問題がなければ短く。気になる点があれば数値を添えて具体的に返します。
+- **bas-04** あなた（臨床工学技士）→外科医｜**Sorry, say again?**｜すみません、もう一度お願いします。｜出典未確認｜要確認を含む
+  - 言い方の幅: Sorry, could you say that again? / Sorry, I didn't catch that.
+  - 返答: Flow down to 500.
+  - 注記: [コツ] 「聞こえたとおりに言えば、間違っていても訂正してもらえる」という指導があります。聞き取れなければ遠慮なく聞き返します。 / [要確認] "Say again?" は無線などで一般的な聞き返しですが、手術室での使用例は出典で確認できていません。
+- **bas-05** あなた（臨床工学技士）→外科医｜**Did you say 2.5?**｜2.5とおっしゃいましたか？｜出典未確認｜要確認を含む
+  - 言い方の幅: Two point five, right? / Confirming 2.5?
+  - 返答: Yes, 2.5.
+  - 注記: [コツ] 15 と 50、13 と 30 のように聞き違えやすい数字は、聞こえた値を言って確かめます。 / [要確認] 数値を確かめるこの言い方は自然な英語ですが、手術室での使用例は出典で確認できていません。
+- **bas-06** あなた（臨床工学技士）→外科医｜**LV vent's off. O-F-F.**｜LVベントを止めました。オフです（綴りで）。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: The LV vent is off.
+  - 返答: Vent off. Thank you.
+  - 注記: [コツ] on と off は手術室で聞き違えやすい組み合わせです。off を綴りで言う技士がいます。
+- **bas-07** 外科医→あなた（臨床工学技士）｜**Hold there for a second.**｜少しそのまま保って。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Keep it there, please.
+  - 返答: Holding.
+  - 注記: [コツ] 返事は動作を1語で返すだけでも closed-loop になります（"Holding."）。
+- **bas-08** あなた（臨床工学技士）→全員｜**Can I have quiet, please?**｜少し静かにしていただけますか。｜出典未確認｜要確認を含む
+  - 言い方の幅: Quiet, please.
+  - 注記: [コツ] 重要な伝達の間は、周りに静かにしてもらうことが推奨されています。 / [要確認] 行動の推奨は出典で確認できましたが、この言い回しそのものは確認できていません。
+- **bas-09** あなた（臨床工学技士）→麻酔科医｜**That's 10,000 units of heparin at 8:58.**｜ヘパリン1万単位、8時58分ですね。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: 10,000 units at 8:58.
+  - 返答: Correct, 8:58.
+  - 注記: [コツ] 量・薬剤・時刻を1文で言い、受け手が同じ形で返すのが closed-loop の基本形です。"OK" だけでは聞き違いに気づけません。 / [施設差] ヘパリンの追加量は施設のプロトコルによります（ここの量は例）。
+
+## 1. 人工心肺開始前（Before Bypass）
+
+- **pre-01** あなた（臨床工学技士）→全員｜**My name is Ken. I'm the perfusionist today.**｜臨床工学技士のケンです。今日の人工心肺を担当します。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: I'm Ken, the perfusionist.
+  - 返答: I'm going to be circulating.
+  - 注記: [コツ] 名前は自分の名前に置き換えて練習します。circulating は外回り看護師の担当のことです。 / [地域差] 英国の職名は clinical perfusion scientist ですが、clinical perfusionist とも呼ばれます。
+- **pre-02** あなた（臨床工学技士）→全員｜**BSA is about 1.7. Target flow will be 4.1.**｜体表面積は約1.7です。目標流量は4.1（L/分）です。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: The BSA is 1.7, so our target flow is 4.1 liters.
+  - 返答: Target 4.1. Thanks.
+  - 注記: [施設差] 目標流量は体表面積と予定温度から施設のプロトコルで決めます（2.2〜2.8 L/min/m² が一般的。1.7 × 2.4 ≒ 4.1）。 / [コツ] 管理計画を開始前にチームへ伝えることは、米国と豪州・NZの基準に書かれています。流量の単位（L/分）は省略されがちです。
+- **pre-03** あなた（臨床工学技士）→全員｜**Pump checklist complete.**｜人工心肺のチェックリストは完了しています。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: The pump checklist is complete. / Perfusion checklist is done.
+  - 返答: Pump checklist complete. Thank you.
+  - 注記: [コツ] EACTS はタイムアウトで人工心肺前チェックリストの完了を確かめるよう記載しています。 / [コツ] チェックリストは読み上げて確かめる方式（read-verify）で、2人で行うことが推奨されています。
+- **pre-04** 外科医→麻酔科医｜**Give heparin.**｜ヘパリンを投与して。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: Please give the heparin. / Could you give the heparin, please?
+  - 返答: Heparin given. / Heparin is in.
+  - 注記: [コツ] 「投与して」に "Heparin is in." と動作で返すのが内容のある復唱です。"OK" だけの返事と区別されます。
+- **pre-05** 麻酔科医→全員｜**21,000 units of heparin going in at 8:45.**｜ヘパリン2万1000単位、8時45分に投与します。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Heparin, 21,000 units, at 8:45. / Heparin's going in now. 21,000 units.
+  - 返答: That's 21,000 units of heparin at 8:45.
+  - 注記: [施設差] ヘパリン初回量は、国内の添付文書（150〜300 単位/kg）と海外ガイドラインの本文（300〜500 単位/kg 程度）で幅が異なります。ここの量は例です。 / [コツ] 受け手は量・薬剤・時刻を同じ形で返します。2万1000は "twenty-one thousand" と読みます。
+- **pre-06** あなた（臨床工学技士）→外科医｜**ACT is good. Stopped at 485.**｜ACTは良好です。485で確定しました。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: The ACT is 485. / ACT on target.
+  - 返答: 485. Good, let's cannulate.
+  - 注記: [コツ] 測定が終わった値は "stopped at"、測定中なら "and rising" と言い分けます。秒（seconds）は省略されることが多いです。 / [施設差] ACT の目標は 480 秒超が代表的（STS 2018）ですが、測定機器や施設によって 400 秒を基準にすることもあります。
+- **pre-07** 外科医→あなた（臨床工学技士）｜**Can we have the pump suckers, please?**｜ポンプサッカーを回してもらえますか。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Pump suckers on, please. / Can we turn the cardiotomy suckers on?
+  - 返答: Suckers are on.
+  - 注記: [施設差] サッカーを回し始める ACT を定めたガイドラインはなく、施設で異なります（300 秒・400 秒の例）。 / [コツ] サッカーを回路の色で呼ぶ施設もあります（オランダの例: "blue suction"）。
+- **pre-08** 外科医→あなた（臨床工学技士）｜**Just turn on cardiotomy.**｜いいから、サッカーを回して。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Turn the suckers on now, please. / Just turn the suckers on.
+  - 返答: Not yet. ACT is only 350. I need it over 400.
+  - 注記: [安全] ヘパリンの効果（ACT の延長）を確かめてからサッカーを使うのが手順です。急かされても、基準を超えるまで断って待った事例が豪州・NZで報告されています。 / [コツ] ここの cardiotomy は心内吸引（cardiotomy suckers）のことです。
+- **pre-09** あなた（臨床工学技士）→外科医｜**Not yet. ACT is only 350. I need it over 400.**｜まだです。ACTはまだ350です。400を超えるまで待ってください。｜出典未確認｜要確認を含む
+  - 言い方の幅: Please wait. The ACT is only 350. / Can you give me a minute? ACT is 350. I want it over 400.
+  - 返答: OK. Tell me when it's over 400.
+  - 注記: [要確認] 急かされて断った行動は豪州・NZの報告で確認できましたが、この言い回しそのものは出典で確認できていません。 / [施設差] サッカーや体外循環を始めてよい ACT の基準は施設で異なります（400 は豪州・NZの事例の値）。
+- **pre-10** 麻酔科医→あなた（臨床工学技士）｜**Here's your ACT sample.**｜ACT 用の検体です。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: This is the sample for the ACT.
+  - 返答: Thanks. Running the ACT now.
+  - 注記: [施設差] この訓練動画では麻酔科医が採血して技士に渡しています。採血と測定の分担は施設で異なります。
+
+## 2. カニュレーション（Cannulation）
+
+- **can-01** 外科医→麻酔科医｜**Can we bring the systolic below 100 for cannulation?**｜送血管を入れるので、収縮期血圧を100未満に下げてもらえますか。｜出典未確認｜要確認を含む
+  - 言い方の幅: Please lower the blood pressure for cannulation. / Can you bring the pressure down for me?
+  - 返答: Bringing it down. / Systolic is 95 now.
+  - 注記: [要確認] 送血管挿入時に降圧する慣行は EACTS の本文で確認できましたが、この依頼の言い回しは出典で確認できていません。 / [施設差] 挿入時の収縮期血圧は通常 100 mmHg 未満（EACTS）ですが、90〜100 とする総説もあり、目標は施設・術者で異なります。
+- **can-02** 外科医→あなた（臨床工学技士）｜**Can I divide your lines?**｜回路（ライン）を切り離していい？｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Is it OK to divide the lines?
+  - 返答: Pump is off. Lines are clamped. Go ahead.
+  - 注記: [コツ] divide は回路のループ（A-V ループ）を切って送血側と脱血側に分けることです。オランダの基準も重要な伝達項目にしています。
+- **can-03** あなた（臨床工学技士）→外科医｜**Pump is off. Lines are clamped.**｜ポンプは止めています。ラインは鉗子で止めています。｜出典未確認｜要確認を含む
+  - 言い方の幅: The pump is stopped and the lines are clamped. / Pump off, clamps on. You can divide.
+  - 返答: Thanks. Dividing the lines.
+  - 注記: [要確認] 切り離しの前に「ポンプ停止・脱血側の鉗子」を確かめることは英国の講義で確認できましたが、技士の言い回しとしては出典で確認できていません。 / [コツ] on と off は聞き違えやすいので、"Pump is off." と主語をつけて言うと伝わりやすくなります。
+- **can-04** 外科医→あなた（臨床工学技士）｜**You've got your arterial line.**｜送血ラインをつないだよ（確認して）。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: The arterial line is connected.
+  - 返答: I've got a good pulse. I'm going to test the line.
+  - 注記: [コツ] arterial（送血）と venous（脱血）を聞き分けます。接続のたびに外科医が声をかける例です。
+- **can-05** あなた（臨床工学技士）→外科医｜**I've got a good pulse. I'm going to test the line.**｜拍動はしっかり見えます。送血テストをします。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: I can see a good pulse. I'll test the line now. / Good swing. I'll test the line.
+  - 返答: Go ahead and test it.
+  - 注記: [地域差] 送血ライン圧の拍動を、米国では "good pulse"、英国・豪州では "swing" と言う例が確認されています。 / [施設差] 国内の2007年ガイドラインは、体外循環直前のチェック項目に「送血圧拍動の確認」「送血テストの確認」を挙げています。
+- **can-06** あなた（臨床工学技士）→外科医｜**Good line pressure. Line test is good.**｜送血圧は良好、送血テストも問題ありません。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: The line pressure is fine. The test is OK. / Good swing and good pressure. / Line pressure 60, swing great.
+  - 返答: Good. Venous cannula next.
+  - 注記: [コツ] 送血テストは、少量を送って送血ライン圧が異常に上がらないことを確かめる操作です（国内2007年GL）。
+- **can-07** あなた（臨床工学技士）→外科医｜**I don't see a pulse on the arterial line.**｜送血ラインに拍動が見えません。｜出典未確認｜要確認を含む
+  - 言い方の幅: There's no pulse on the arterial line. / I'm not seeing any swing on the line.
+  - 返答: Let me check the cannula.
+  - 注記: [要確認] この言い回しは出典で確認できていません。 / [安全] 接続しても拍動が見えないときは、カニューレ先端が血管内に入っていない（偽腔送血の）おそれがあります（JaSECT ハンドブック）。黙って様子を見ず、すぐ外科医に伝えます。
+- **can-08** 外科医→あなた（臨床工学技士）｜**You've got your venous line.**｜脱血ラインをつないだよ。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: The venous line is connected.
+  - 返答: Got the venous line. Thanks.
+  - 注記: [コツ] arterial（送血）と venous（脱血）は似た場面で続けて出るので、最初の語をよく聞きます。
+- **can-09** 外科医→あなた（臨床工学技士）｜**Give me the venous first.**｜先に脱血側からいくよ。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Let's do the venous line first.
+  - 返答: Venous first. Got it.
+  - 注記: [施設差] 血圧が高いときなどに外科医が脱血側を先に求めることがある、という米国の講師の説明に基づく例です。順番は施設・術者で異なります。
+
+## 3. CPB開始（Going On Bypass）
+
+- **ini-01** あなた（臨床工学技士）→外科医｜**Ready for bypass.**｜体外循環の準備ができています。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: We're ready to go on bypass. / ACT is 520. We're ready for bypass.
+  - 返答: Go on bypass.
+  - 注記: [施設差] 体外循環を始めてよい ACT の基準は施設のプロトコルによります（480 秒超が代表的）。
+- **ini-02** 外科医→あなた（臨床工学技士）｜**Start bypass.**｜体外循環を開始して。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: Please start bypass. / Go on bypass.
+  - 返答: We're going on bypass. / Full flow.
+  - 注記: [コツ] 米国の手術録音では "Start bypass." への応答が "Full flow."（目標流量に到達）でした。開始の宣言と到達の宣言を分けて言います。 / [施設差] 日本では、臨床工学技士は医師の具体的な指示を受けて人工心肺を操作します（臨床工学技士法38条）。指示を受けたら、動作を声に出して返します。
+- **ini-03** あなた（臨床工学技士）→全員｜**On bypass at 9:20.**｜9時20分、体外循環を開始しました。｜出典未確認｜要確認を含む
+  - 言い方の幅: We went on bypass at 9:20.
+  - 返答: On bypass at 9:20. Got it.
+  - 注記: [要確認] 開始時刻を口頭で伝える決まった言い回しは、出典で確認できていません。 / [コツ] 時刻は "nine twenty" のように区切って読みます。
+- **ini-04** 麻酔科医→あなた（臨床工学技士）｜**Let me know when you get to full flow.**｜フルフローになったら教えて。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Tell me when you reach full flow.
+  - 返答: Will do. I'll tell you at full flow.
+  - 注記: [コツ] 技士が full flow を宣言するまで換気を続けるのが推奨される行動です。宣言は換気停止の合図になります。
+- **ini-05** あなた（臨床工学技士）→全員｜**Full flow.**｜目標流量（フルフロー）に達しました。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: We're at full flow. / I'm at full flow.
+  - 返答: Full flow. Thank you.
+  - 注記: [安全] full flow の宣言が換気停止の合図です。宣言の前に換気を止めないよう、はっきり言います。 / [コツ] full flow（開始時の到達）と half flow（離脱の途中）は似た音なので、full と half をはっきり言います。
+- **ini-06** あなた（臨床工学技士）→麻酔科医｜**You can turn the lungs off.**｜換気を止めてください。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Please stop the ventilator. / You want to turn your lungs off?
+  - 返答: Lungs are off.
+  - 注記: [コツ] vent は人工呼吸器のこともLVベントのこともあるので、lungs や ventilator と言うと確実です。
+- **ini-07** 麻酔科医→あなた（臨床工学技士）｜**Vent's off, gas is off.**｜人工呼吸器を止めました。吸入麻酔も止めました。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: The ventilator is off, and the gas is off.
+  - 返答: Thanks. I've got sweep on.
+  - 注記: [コツ] ここの vent は人工呼吸器のことです。LVベントの "vent" と聞き違えないよう、場面で判断します。 / [コツ] sweep は人工肺に流すガスのことです。換気を止めたあとはガスが流れていることを確かめます。
+- **ini-08** あなた（臨床工学技士）→外科医｜**Got a nice empty heart.**｜心臓はよく虚脱しています（脱血良好）。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: The heart is empty. / Heart's emptying out.
+  - 返答: Looks good from here.
+  - 注記: [コツ] 開始直後は、脱血がリザーバーに戻っているか、送血が酸素化されているか（血の色）を確かめます。
+- **ini-09** 外科医→あなた（臨床工学技士）｜**Heart looks a little full.**｜心臓が少し張っているね。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: The heart is a little full.
+  - 返答: Yes. My level is dropping.
+  - 注記: [コツ] 心臓が張るのは脱血が足りないサインです。気づいたら技士からも「レベルが下がっている」と具体的に伝えます。
+- **ini-10** 外科医→あなた（臨床工学技士）｜**Did that get you some drainage back?**｜（カニューレを調整したけど）脱血は戻った？｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Is the drainage better now?
+  - 返答: It did. My level's getting a little better.
+  - 注記: [コツ] 返事では「何が・どう変わったか」（レベルが上がってきた）を言うと、外科医が次の判断をしやすくなります。
+
+## 4. ベント（Venting）
+
+- **ven-01** 外科医→あなた（臨床工学技士）｜**Fill the heart for the LV vent.**｜LVベントを入れるので、心臓を満たして。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Please fill the heart a little. / Fill up the heart for the vent.
+  - 返答: Volume is going in.
+  - 注記: [コツ] 返事は "Volume is going in." のように動作で返します。挿入が終わると "drain out"（脱血を戻して）が続きます。
+- **ven-02** 外科医→あなた（臨床工学技士）｜**LV vent is in. Go ahead and drain out.**｜LVベントが入った。脱血を戻していいよ。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: The LV vent is in. You can drain now.
+  - 返答: Draining out.
+  - 注記: [コツ] "drain out" は脱血を再開して心臓を空にすることです。返事も "Draining out." と動作で返します。
+- **ven-03** あなた（臨床工学技士）→外科医｜**LV vent is on.**｜LVベントを回しました。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: The LV vent is running. / LV vent's coming on.
+  - 返答: LV vent on. Thanks.
+  - 注記: [コツ] "vent" だけだと人工呼吸器のことにもなるので、LV / root と部位をつけて言います。 / [施設差] ベント回路の色分けや呼び方（"the white" など）は施設で異なります。
+- **ven-04** あなた（臨床工学技士）→外科医｜**I've got good return on the vent.**｜ベントの引き（戻り）は良好です。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: The vent is working well.
+  - 返答: Good. Leave it on.
+  - 注記: [コツ] return は、ベント（や脱血）から回路に戻ってくる血液のことです。
+- **ven-05** あなた（臨床工学技士）→外科医｜**I'm not getting much return on the LV vent.**｜LVベントの引きがあまりありません。｜出典未確認｜要確認を含む
+  - 言い方の幅: The LV vent is not pulling much. / Not much coming back on the LV vent.
+  - 返答: Let me check the vent.
+  - 注記: [要確認] "good return on the vent" の否定形として作った表現で、出典では確認できていません。 / [安全] ベントは心臓の張りを防ぐためのものです。引きが強すぎる・弱いときは、そのままにせずすぐ外科医に伝えます。
+- **ven-06** あなた（臨床工学技士）→外科医｜**Testing root vent.**｜ルートベントを試しに回します。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: I'm checking the root vent. / Testing root vent… and off.
+  - 返答: Root vent works. Off for now.
+  - 注記: [コツ] 試したあとに "And off." と止めたことまで言うと、回しっぱなしの誤解を防げます。
+- **ven-07** 外科医→あなた（臨床工学技士）｜**Root vent can go on.**｜ルートベントを回していいよ。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: You can start the root vent.
+  - 返答: Root vent's coming on.
+  - 注記: [コツ] LV ベントと root ベントは別の回路です。どちらの話かを最初の語で聞き分けます。
+- **ven-08** 外科医→麻酔科医｜**Vent off.**｜（麻酔科へ）人工呼吸器を止めて。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: Please stop the ventilator.
+  - 返答: Vent's off.
+  - 注記: [安全] 米国の手術録音では "Vent off" "Restart vent" の vent は人工呼吸器のことでした。誰に向けた指示かで、LV ベントの話と区別します。
+
+## 5. 冷却（Cooling）
+
+- **coo-01** 外科医→あなた（臨床工学技士）｜**34, please.**｜34℃まで冷やして。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Please cool to 34 degrees. / Let's cool to 34.
+  - 返答: Cooling to 34.
+  - 注記: [施設差] 目標温度（常温〜軽度低体温）は術式と施設で異なります。32〜34℃ の軽度低体温を使う施設が多いという調査があります。 / [コツ] 温度の指示では degrees（度）が省かれ、数字だけのことがよくあります。
+- **coo-02** あなた（臨床工学技士）→外科医｜**Cooling to 34.**｜34℃まで冷却します。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: I'm cooling to 34 degrees. / We are cooling to 34.
+  - 返答: 34. Thank you.
+  - 注記: [コツ] 目標温度は数字をそのまま返します。オランダの基準でも、体外循環の温度を声に出して伝えることが重要項目です。
+- **coo-03** 麻酔科医→あなた（臨床工学技士）｜**What's the temp now?**｜今、体温は何度？｜出典未確認｜要確認を含む
+  - 言い方の幅: What is the temperature now?
+  - 返答: Naso is 35.
+  - 注記: [要確認] 温度を尋ねるこの言い回しは自然な英語ですが、出典で確認できていません。 / [コツ] 答えるときは測定部位（naso / bladder）を添えます。
+- **coo-04** あなた（臨床工学技士）→外科医｜**Naso is 35.**｜鼻咽頭温は35℃です。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: The nasopharyngeal temperature is 35. / We're at 35 on the naso.
+  - 返答: 35. Keep going to 34.
+  - 注記: [コツ] naso は鼻咽頭温（nasopharyngeal）の略で、豪州・NZの記録にも使われています。膀胱温は bladder と言います。 / [施設差] 体温は複数の部位で同時に測ることが推奨されています。どの部位を主に見るかは施設で異なります。
+- **coo-05** あなた（臨床工学技士）→外科医｜**I'm going to let the patient drift.**｜積極的には冷やさず、自然に下がるのに任せます。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: I won't actively cool. I'll let the temperature come down. / Is it OK to let the patient drift?
+  - 返答: Fine. Just let it drift.
+  - 注記: [コツ] drift は「能動的に冷やさず自然に下げる」ことを表す現場の言い方です（米国の講師の説明）。 / [施設差] 能動的に冷やすか、自然に任せるか、常温で行うかは、術式と施設で異なります。 / [施設差] 日本では、臨床工学技士は医師の具体的な指示のもとで人工心肺を操作します（臨床工学技士法38条）。方針を自分で宣言する米国流より、"Is it OK to …?" と確認する形が日本の運用に合います。
+- **coo-06** 外科医→あなた（臨床工学技士）｜**Can you cool any faster?**｜もっと速く冷やせない？｜出典未確認｜要確認を含む
+  - 言い方の幅: Can you cool more quickly?
+  - 返答: I'm keeping the gradient under 10.
+  - 注記: [要確認] この依頼の言い回しは、出典で確認できていません。
+- **coo-07** あなた（臨床工学技士）→外科医｜**I'm keeping the gradient under 10.**｜（送血と脱血の）温度差を10℃未満に保っています。｜出典未確認｜要確認を含む
+  - 言い方の幅: I'm keeping the temperature difference under 10 degrees.
+  - 返答: Understood. Keep it under 10.
+  - 注記: [要確認] この言い回しは出典で確認できていません。 / [安全] 冷却時、人工肺の送血出口と静脈血の温度差は 10℃ を超えないことが推奨されています（ガス塞栓の予防）。
+
+## 6. 大動脈遮断（Cross-Clamp）
+
+- **xcl-01** 外科医→全員｜**Cross clamp.**｜大動脈遮断に移ります。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: We're going to cross clamp now.
+  - 注記: [コツ] 器械出し看護師が遮断鉗子を外科医に渡すことも、次が遮断だという合図になります（米国の研究）。 / [コツ] オランダの品質基準は、遮断の前後を必ず言葉にする項目として扱っています。
+- **xcl-02** 外科医→あなた（臨床工学技士）｜**Ready for cross clamp?**｜遮断していい？（準備はいい？）｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Are you ready for the cross clamp? / You ready for a cross clamp?
+  - 返答: Bypass looks good. We're okay to cross.
+  - 注記: [コツ] 同じ言葉で "Ready for cross clamp." と返す例もあります。
+- **xcl-03** あなた（臨床工学技士）→外科医｜**Bypass looks good. We're okay to cross.**｜体外循環は良好です。遮断して大丈夫です。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Bypass is good. Ready for cross clamp.
+  - 返答: Good. Flow down, please.
+  - 注記: [コツ] cross は cross clamp の略です。気になる点（脱血・圧など）があれば、ここで先に伝えます。
+- **xcl-04** 外科医→あなた（臨床工学技士）｜**Flow down.**｜流量を下げて。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: Please lower the flow. / Drop your flow to 500, please.
+  - 返答: Pump flow down.
+  - 注記: [施設差] 遮断のときに下げる流量の値は施設・術者で異なります。 / [コツ] 返事は "Pump flow down." と動作で返します（米国の手術録音の応答）。
+- **xcl-05** あなた（臨床工学技士）→外科医｜**Flow's at 500.**｜流量500です（下げました）。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: The flow is 500 now. / Okay, flow's coming down.
+  - 返答: Thanks. Clamp going on.
+  - 注記: [コツ] 単位は言わないのがふつうです。この場面の "500" は 500 mL/分 のことです。 / [施設差] 遮断のときに下げる流量の値は施設・術者で異なります（ここの 500 は例）。
+- **xcl-06** 外科医→あなた（臨床工学技士）｜**Clamp on, flow up.**｜遮断した。流量を戻して。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: The clamp is on. Bring the flow back up. / Clamp's on, back up.
+  - 返答: Flow back up.
+  - 注記: [コツ] back up（流量を戻す）と back on（体外循環を再開する）は別の意味です。聞き違えないようにします。
+- **xcl-07** あなた（臨床工学技士）→外科医｜**Flow back up.**｜流量を戻しました。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: The flow is back up. / Clamp on. Coming back up.
+  - 返答: Back up. Thank you.
+  - 注記: [コツ] 「下げる → 遮断 → 戻す」を必ず対で復唱します。黙って戻すと、外科医は戻ったかどうか分かりません。
+- **xcl-08** あなた（臨床工学技士）→全員｜**Clamp on at 9:28.**｜9時28分、遮断開始です。｜出典未確認｜要確認を含む
+  - 言い方の幅: The clamp went on at 9:28.
+  - 返答: Clamp on at 9:28. Got it.
+  - 注記: [要確認] 遮断時刻を口頭で伝える決まった言い回しは確認できていません。記録の書き方（"10:14 XCLAMP on"）は豪州・NZの報告で確認済みです。
+- **xcl-09** あなた（臨床工学技士）→外科医｜**Clamp time is 45 minutes.**｜遮断時間は45分です。｜出典未確認｜要確認を含む
+  - 言い方の幅: The clamp has been on for 45 minutes. / We've been clamped for 45 minutes.
+  - 返答: 45 minutes. Thanks.
+  - 注記: [要確認] 遮断時間を口頭で伝える決まった言い回しは、出典で確認できていません。 / [コツ] 遮断時刻を記録しておき、聞かれたらすぐ経過時間を答えられるようにします。
+
+## 7. 心筋保護（Cardioplegia）
+
+- **ple-01** 外科医→あなた（臨床工学技士）｜**Start antegrade.**｜順行性で（心筋保護を）始めて。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: Please start the antegrade cardioplegia. / Antegrade, please.
+  - 返答: Cardioplegia flowing.
+  - 注記: [コツ] antegrade（順行性・大動脈基部から）と retrograde（逆行性・冠静脈洞から）を聞き違えないように。
+- **ple-02** あなた（臨床工学技士）→外科医｜**Cardioplegia flowing.**｜心筋保護液、注入中です。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: The cardioplegia is going in. / Giving antegrade cardioplegia.
+  - 返答: Let me know the pressure.
+  - 注記: [コツ] 米国の手術録音では "Start antegrade." への定型の応答として記録されています。
+- **ple-03** 外科医→あなた（臨床工学技士）｜**Give one liter antegrade, please.**｜順行性で1リットル入れて。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: One liter of cardioplegia, please. / Go to a liter.
+  - 返答: Giving one liter antegrade.
+  - 注記: [施設差] 血液心筋保護の初回量は、主要なガイドラインや国内資料で確認できず、施設で異なります。ここの量は例です。
+- **ple-04** あなた（臨床工学技士）→外科医｜**Root pressure is 80.**｜大動脈基部圧は80です。｜出典未確認｜要確認を含む
+  - 言い方の幅: The root pressure is 80. / Got good flows and good pressure on the cardioplegia.
+  - 返答: 80. Good.
+  - 注記: [施設差] 順行性の基部圧の目安は EACTS で 60〜100 mmHg、国内2007年ガイドラインで 80〜100 mmHg。80 は両方に合う例です。 / [要確認] 基部圧を報告すること（注入圧の継続監視）は確認済みですが、この言い回しそのものは出典で確認できていません。
+- **ple-05** 麻酔科医→外科医｜**Looks like we have quiescence on the EKG.**｜心電図が静止しました。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: The heart has stopped. / Heart is still.
+  - 返答: Arrested. Root pressure is 80.
+  - 注記: [地域差] 心電図は米国で EKG、英国で ECG と言います。
+- **ple-06** あなた（臨床工学技士）→外科医｜**That was one-third dose.**｜（心停止までに）予定量の3分の1が入りました。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: About a third of the dose is in. / That's a third so far.
+  - 返答: Go to a liter.
+  - 注記: [コツ] 全量に対する割合（one-third dose）で答える言い方です。外科医の "How much was that?" への返答として確認されています。
+- **ple-07** あなた（臨床工学技士）→外科医｜**Last cardioplegia was 20 minutes ago.**｜前回の心筋保護から20分たちました。｜出典未確認｜要確認を含む
+  - 言い方の幅: 20 minutes since the last dose. / It's been 20 minutes since the last cardioplegia.
+  - 返答: Thanks. I'll give it after this anastomosis.
+  - 注記: [施設差] 追加投与の間隔は心筋保護液で大きく異なります（血液心筋保護は 20〜30 分ごとが目安、del Nido は成人で 90 分程度まで単回が基本）。 / [コツ] オランダの品質基準では「前回の投与から○分」を伝えることが重要な伝達項目に入っています。 / [要確認] 伝える項目（オランダの品質基準 "Last cardioplegia administered … minutes ago"、英訳）は確認済みですが、この言い回しそのものは確認できていません。
+- **ple-08** 外科医→あなた（臨床工学技士）｜**Let me know again every 15 minutes.**｜また15分ごとに知らせて。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Please tell me every 15 minutes.
+  - 返答: I'll let you know in 15 minutes.
+  - 注記: [施設差] 知らせる間隔は外科医・心筋保護液・施設で異なります（ここの15分は例）。
+- **ple-09** 外科医→あなた（臨床工学技士）｜**Let's go retrograde.**｜逆行性でいこう。｜出典未確認｜要確認を含む
+  - 言い方の幅: Please give it retrograde. / We're gonna run retro.
+  - 返答: Retrograde going in. CS pressure is 30.
+  - 注記: [要確認] "run retro" は講義動画の自動字幕から拾った表現で、確度が低く音声での確認が必要です。 / [コツ] retro（逆行性）と root（基部）は音が近いので、聞き取れなければ確かめます。
+- **ple-10** あなた（臨床工学技士）→外科医｜**Retrograde going in. CS pressure is 30.**｜逆行性で注入中。冠静脈洞圧は30です。｜出典未確認｜要確認を含む
+  - 言い方の幅: Retrograde is on. The coronary sinus pressure is 30. / Retro going in, sinus pressure 30.
+  - 返答: 30. Keep it there.
+  - 注記: [施設差] 逆行性の冠静脈洞圧の目安は EACTS で 30〜50 mmHg、国内2007年ガイドラインで約 30 mmHg、HTK の製品概要では 30 mmHg 以下。30 は国内外とも合う例です。 / [要確認] 冠静脈洞圧の報告のしかたは出典で決まった言い回しとして確認できていません。
+
+## 8. CPB中の管理（Managing On Bypass）
+
+- **onb-01** 麻酔科医→あなた（臨床工学技士）｜**What's your mean?**｜平均血圧はいくつ？｜出典未確認｜要確認を含む
+  - 言い方の幅: What's the mean pressure? / Where are we on the mean?
+  - 返答: Mean is 62. Flow is 4.5.
+  - 注記: [コツ] 手術室では平均血圧を "mean" だけで言うことが多く、単位（mmHg）は省きます（"a mean of about 80"）。 / [要確認] "mean" の言い方は確認済みですが、この質問の言い回しそのものは出典で確認できていません。
+- **onb-02** あなた（臨床工学技士）→麻酔科医｜**Mean is 44. May I give phenylephrine 100 micrograms into the circuit?**｜平均血圧44です。フェニレフリン100マイクログラムを回路から入れてよいですか？｜出典未確認｜要確認を含む
+  - 言い方の幅: The mean is 44. Can I give some phenylephrine? / Mean is in the 40s. Would you like some phenylephrine?
+  - 返答: Yes, give 100 micrograms.
+  - 注記: [施設差] 日本では、臨床工学技士が回路から薬剤を注入するには医師の具体的な指示が必要です（臨床工学技士法38条）。数値を伝えて「入れてよいか」を確かめる形にしています。 / [施設差] 平均血圧は 50〜80 mmHg に保つことが推奨されています（EACTS 2024）。44 は低い例で、薬剤と量は施設のプロトコルによります。 / [要確認] この言い回しは日本の運用に合わせて作った文で、出典で確認できていません。
+- **onb-03** あなた（臨床工学技士）→全員｜**I'm going to treat this hypotension with some phenylephrine.**｜この低血圧にフェニレフリンを使います。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: I'm giving some phenylephrine for the low pressure. / I'm going to give some Neo.
+  - 返答: Thanks. Tell me the dose.
+  - 注記: [施設差] 米国では技士が回路から昇圧薬を投与する場面があり、英国では院内規定と個別指示書に沿って投与します。日本では医師の具体的な指示が必要なので、この「宣言」の形はそのまま使えません（聞き取り用）。 / [地域差] 英国・豪州では、metaraminol を使った症例・研究・報告があります。
+- **onb-04** あなた（臨床工学技士）→麻酔科医｜**That's 100 mics of phenylephrine.**｜フェニレフリン100マイクログラムです（入れました）。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: 100 micrograms of phenylephrine is in. / 100 mics of Neo in.
+  - 返答: 100 mics. Got it.
+  - 注記: [コツ] mics は micrograms の短縮形です。合計量を "so far"（ここまでで）と添えることもあります（"about 80 mics so far"）。 / [施設差] 薬剤と量は例です。投与したら量と時刻を記録し、チームに伝えます。
+- **onb-05** 麻酔科医→あなた（臨床工学技士）｜**The mean is about 50. We're giving some phenylephrine.**｜平均血圧は50くらい。フェニレフリンを入れています。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Mean is 50. I gave some phenylephrine.
+  - 返答: Mean 50, phenylephrine in. Thank you.
+  - 注記: [コツ] 誰が何を入れたかをお互いに言葉にしておくと、二重投与を防げます。
+- **onb-06** 麻酔科医→あなた（臨床工学技士）｜**Gas is back. Hemoglobin's 8.2, potassium 4.6.**｜血液ガスが出ました。ヘモグロビン8.2、カリウム4.6。｜出典未確認｜要確認を含む
+  - 言い方の幅: The blood gas is back. Hb 8.2, K 4.6. / Gas is back. Crit 25, K 4.6.
+  - 返答: Hemoglobin 8.2, potassium 4.6. Thanks.
+  - 注記: [地域差] 単位は国で違います（米: Hb g/dL・Hct %、英・豪: Hb g/L で "Hb 82" のように言う）。 / [施設差] 体外循環中は Hct 18% 未満で輸血が推奨され、18〜24% は組織の酸素化を見て判断します（EACTS 2024）。数値は例です。 / [要確認] 血液ガスの結果を読み上げる決まった言い回しは、出典で確認できていません。
+- **onb-07** あなた（臨床工学技士）→麻酔科医｜**ACT is 450. Do you want more heparin?**｜ACTは450です。ヘパリンを追加しますか？｜出典未確認｜要確認を含む
+  - 言い方の幅: The ACT is 450. Should we give more heparin? / ACT's back, 450. More heparin?
+  - 返答: 5,000 units going in at 10:20.
+  - 注記: [施設差] ACT の目標と追加量は施設のプロトコルによります（480 秒超が代表的、機器によって 400 秒を目標にする施設も）。復温中はヘパリンの効果が短くなりやすいとされます。 / [要確認] この言い回しは出典で確認できていません（ACT を見て追加するという考え方は確認済み）。
+- **onb-08** あなた（臨床工学技士）→外科医｜**DO2i is 260. Can I bring the flow up to 4.8?**｜DO2iが260です。流量を4.8に上げてもいいですか？｜出典未確認｜要確認を含む
+  - 言い方の幅: The DO2i is low. Can I increase the flow? / DO2i is 260 — let's bring the flow up.
+  - 返答: Go ahead. Flow up to 4.8.
+  - 注記: [コツ] DO2i（酸素供給量係数）は 280 mL/min/m² 以上を保つことが推奨されています（EACTS 2024）。 / [要確認] この言い回しは出典で確認できていません（DO2i を見て流量を上げるという考え方は確認済み）。
+- **onb-09** あなた（臨床工学技士）→麻酔科医｜**K is 5.8 after the cardioplegia.**｜心筋保護のあとでカリウムが5.8です。｜出典未確認｜要確認を含む
+  - 言い方の幅: Potassium is 5.8. / K's up to 5.8 after the pleg.
+  - 返答: 5.8. Let me know the next gas.
+  - 注記: [施設差] 心筋保護のあとはカリウムが上がりやすく、6.5〜7 mmol/L を超えると治療を検討するとされます（EACTS 本文）。5.8 は経過を見る範囲の例です。 / [要確認] この言い回しは出典で確認できていません。
+- **onb-10** 麻酔科医→あなた（臨床工学技士）｜**Hematocrit is 20. DO2i is fine, so no blood yet.**｜ヘマトクリット20。DO2iは保てているので、まだ輸血はしない。｜出典未確認｜要確認を含む
+  - 言い方の幅: Hct is 20, but DO2i is okay. No transfusion for now.
+  - 返答: Hematocrit 20, no blood yet. Understood.
+  - 注記: [施設差] Hct 18〜24% は組織の酸素化（DO2i など）を見て輸血を判断し、18% 未満では輸血が推奨されます（EACTS 2024）。判断は医師が行います。 / [要確認] この言い回しは出典で確認できていません。
+
+## 9. 復温（Rewarming）
+
+- **rew-01** 外科医→あなた（臨床工学技士）｜**Start rewarming.**｜復温を始めて。｜出典未確認｜要確認を含む
+  - 言い方の幅: Please start warming the patient. / Let's start warming.
+  - 返答: Starting to rewarm.
+  - 注記: [要確認] 外科医の指示で復温を始めることは豪州・NZの報告で確認できましたが、この言い回しそのものは確認できていません。
+- **rew-02** あなた（臨床工学技士）→外科医｜**Starting to rewarm. I'll keep the gradient within 4 degrees.**｜復温を始めます。温度差は4℃以内に保ちます。｜出典未確認｜要確認を含む
+  - 言い方の幅: I'm warming now. The gradient will stay under 4 degrees. / Rewarming, gradient within 4.
+  - 返答: Good. Take your time.
+  - 注記: [施設差] 送血温 30℃ 以上では温度差 4℃ 以下・復温 0.5℃/分 以下が推奨されています（STS 2015）。国内2007年ガイドラインは 5℃ 以内。 / [要確認] この言い回しは出典で確認できていません。
+- **rew-03** 外科医→あなた（臨床工学技士）｜**What's your temp?**｜体温は？｜出典未確認｜要確認を含む
+  - 言い方の幅: What is the temperature now?
+  - 返答: Naso is 36.4, bladder 35.1.
+  - 注記: [要確認] この質問の言い回しは出典で確認できていません。
+- **rew-04** あなた（臨床工学技士）→外科医｜**Naso is 36.4, bladder 35.1.**｜鼻咽頭温36.4℃、膀胱温35.1℃です。｜出典未確認｜要確認を含む
+  - 言い方の幅: Nasopharyngeal is 36.4. Bladder is 35.1. / 36.4 naso, 35.1 bladder.
+  - 返答: Almost there. Keep going.
+  - 注記: [コツ] 復温中、膀胱温や直腸温は脳温より 2〜4℃ 低く出ることがあります。部位を添えて伝えると誤解がありません。 / [要確認] "naso" という略し方は豪州・NZの記録で確認できましたが、この報告の文そのものは確認できていません。
+- **rew-05** あなた（臨床工学技士）→外科医｜**Arterial outlet is 36.8. I won't go above 37.**｜送血温は36.8℃です。37℃は超えないようにします。｜出典未確認｜要確認を含む
+  - 言い方の幅: The arterial temperature is 36.8. I will keep it under 37. / Outlet 36.8 — capping at 37.
+  - 返答: Okay. Don't go above 37.
+  - 注記: [安全] 送血温は 37℃ を超えないことが推奨されています（STS 2015: 37℃ 未満、EACTS 2024: 最大 37℃）。 / [要確認] この言い回しは出典で確認できていません。
+- **rew-06** あなた（臨床工学技士）→外科医｜**We're not fully warm yet.**｜まだ十分に温まっていません。｜出典未確認｜要確認を含む
+  - 言い方の幅: The patient is not warm enough yet. / We're not there yet on the temp.
+  - 返答: Okay. Tell me when you're there.
+  - 注記: [施設差] 離脱時の目標体温には確立した推奨値がありません（STS 2015）。何℃で「十分」とするかは施設で決めます。 / [要確認] 豪NZの報告の記述（we weren't fully warm）を現在形にした言い方で、この文そのものは確認できていません。
+- **rew-07** あなた（臨床工学技士）→全員｜**Patient body temperature is adequate.**｜体温は十分です。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: We're warm. Naso is 36.6. / We're warm enough to come off.
+  - 注記: [コツ] オランダの品質基準では、離脱前に「体温は適正」と伝えることが重要な伝達項目です。数値を添えるとより確実です。
+
+## 10. 空気抜き・遮断解除（De-airing & Clamp Off）
+
+- **dea-01** 外科医→全員｜**Head up, volume and ventilate.**｜頭を上げて、心臓を満たして、換気して。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Head up, fill the heart, and ventilate, please. / Volume and ventilate.
+  - 返答: Filling the heart now. / Ventilating.
+  - 注記: [施設差] 空気抜きのときの頭の位置は、講義（head up）と教科書（head down）で異なる例があり、施設・術者の指示に従います。
+- **dea-02** あなた（臨床工学技士）→外科医｜**Filling the heart now.**｜心臓を満たしています。｜出典未確認｜要確認を含む
+  - 言い方の幅: I'm giving volume to the heart. / Volume is going in.
+  - 返答: Good. Hold there.
+  - 注記: [要確認] この言い回しそのものは出典で確認できていません（"Volume is going in." は確認済み）。
+- **dea-03** 外科医→あなた（臨床工学技士）｜**Flow down. Clamp is coming off.**｜流量を下げて。遮断を外すよ。｜出典未確認｜要確認を含む
+  - 言い方の幅: Please lower the flow. I am taking the clamp off. / Low flow for the clamp.
+  - 返答: Flow down.
+  - 注記: [コツ] 遮断のときと同じく「下げる → 解除 → 戻す」を対で言葉にします（"Low flow" → "Aortic cross clamp removed" → "Normal flow"）。 / [要確認] 講義の説明とオランダの品質基準の項目（Low flow）をもとにした言い方で、この文そのものは確認できていません。
+- **dea-04** 外科医→あなた（臨床工学技士）｜**Clamp off, flows back up.**｜遮断解除。流量を戻して。｜出典未確認｜要確認を含む
+  - 言い方の幅: The clamp is off. Please bring the flow back up. / Cross clamp can come off, then you can get the flows back up.
+  - 返答: Flow back up. Clamp off at 10:46.
+  - 注記: [コツ] back up（流量を戻す）と back on（体外循環を再開する）は音が似ているので注意します。 / [要確認] 講義の言い方（cross clamp can come off and then you can get the flows back up）を短くした言い方で、この文そのものは確認できていません。
+- **dea-05** あなた（臨床工学技士）→全員｜**Clamp off at 10:46. Clamp time 85 minutes.**｜10時46分に遮断解除。遮断時間は85分です。｜出典未確認｜要確認を含む
+  - 言い方の幅: The clamp came off at 10:46. Total clamp time is 85 minutes. / X-clamp off 10:46, 85 minutes.
+  - 返答: Clamp off 10:46. 85 minutes. Got it.
+  - 注記: [要確認] 遮断解除の時刻・遮断時間を口頭で伝える決まった言い回しは、出典で確認できていません（記録の書き方 "12:31 - XCLAMP off" は確認済み）。 / [コツ] 遮断時間は「解除時刻 − 遮断時刻」。9:21 に遮断なら 10:46 で 85 分です。
+- **dea-06** 外科医→あなた（臨床工学技士）｜**Hot shot before the clamp comes off.**｜遮断を外す前にホットショットを入れて。｜出典未確認｜要確認を含む
+  - 言い方の幅: Please give the warm cardioplegia before we remove the clamp. / Hot shot, please.
+  - 返答: Hot shot going in.
+  - 注記: [施設差] hot shot（terminal warm blood cardioplegia）を行うか、その温度・量・時間は施設で異なり、主要なガイドラインに数値の記載はありません。 / [要確認] "hot shot" という用語は論文と豪州・NZの報告で確認できましたが、この指示の言い回しは確認できていません。
+- **dea-07** 麻酔科医→外科医｜**There's still some air in the left ventricle.**｜まだ左室に空気が残っています。｜出典未確認｜要確認を含む
+  - 言い方の幅: I can still see air in the LV.
+  - 返答: Keep venting. Root vent on.
+  - 注記: [地域差] 経食道心エコーは米国で TEE、英国・欧州で TOE と言います。 / [要確認] エコーで遺残空気を確かめることは確認済みですが、この報告の言い回しは確認できていません。
+- **dea-08** 外科医→看護師｜**Internal paddles. Charge to 10 joules.**｜体内パドルで。10ジュールに充電して。｜出典未確認｜要確認を含む
+  - 言い方の幅: Internal defibrillation, 10 joules, please. / Paddles, 10 joules.
+  - 返答: Charging to 10. Charged.
+  - 注記: [施設差] 体内除細動のエネルギーは成人で 5〜10 J から始めるという教科書の記載があります。設定と操作の担当は施設で異なります。 / [要確認] 除細動の指示・充電・放電の掛け声は、出典で確認できていません。
+
+## 11. 人工心肺離脱（Coming Off Bypass）
+
+- **wea-01** 外科医→全員｜**Wean pump.**｜離脱していこう。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: Let's start weaning. / Let's come off.
+  - 返答: Weaning. Ready to come down.
+  - 注記: [コツ] 離脱の前にはチェックリストで確認することが推奨されています（EACTS）。
+- **wea-02** 外科医→麻酔科医｜**Restart vent.**｜換気を再開して。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: Please start ventilating again. / Lungs back on, please.
+  - 返答: Vent on.
+  - 注記: [コツ] ここの vent は人工呼吸器のこと。LV ベントの vent と取り違えないように。
+- **wea-03** あなた（臨床工学技士）→麻酔科医｜**Anesthesia, are we ventilating?**｜麻酔科、換気は再開していますか？｜出典未確認｜要確認を含む
+  - 言い方の幅: Is the ventilator on? / Are the lungs back on?
+  - 返答: Yes, we're ventilating.
+  - 注記: [安全] 換気の再開忘れは離脱時の重大なエラーとして知られ、警告する仕組みの研究もあります。国内2007年ガイドラインも、離脱前に麻酔器の換気を再度確認するとしています。 / [要確認] この確認の言い回しは出典で確認できていません。
+- **wea-04** 外科医→あなた（臨床工学技士）｜**Pump flow down.**｜流量を下げて。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: Please bring the flow down. / Come down to half.
+  - 返答: Half flow.
+  - 注記: [施設差] 流量を下げる刻み（half flow など）は施設・術者で異なり、ガイドラインに数値の定めはありません。
+- **wea-05** あなた（臨床工学技士）→外科医｜**Half flow.**｜半分の流量です。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: We're at half flow now. / Half flow, 2.2 liters.
+  - 返答: Good. Hold there.
+  - 注記: [コツ] half flow は離脱途中の段階、full flow は開始時の目標流量。対で覚えます。
+- **wea-06** 外科医→あなた（臨床工学技士）｜**Come off pump.**｜（人工心肺から）離脱して。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: Please stop the pump. We are coming off. / Off bypass.
+  - 返答: We are off pump.
+- **wea-07** あなた（臨床工学技士）→全員｜**We are off pump.**｜人工心肺から離脱しました。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: We're off bypass. / Off bypass.
+  - 返答: Off bypass. Watching the pressure.
+  - 注記: [コツ] on / off は聞き違えやすい語です。離脱の宣言は全員に聞こえる声で、はっきり言います。
+- **wea-08** 外科医→あなた（臨床工学技士）｜**Give 100.**｜（送血管から）100入れて。｜出典未確認｜要確認を含む
+  - 言い方の幅: Please give 100 milliliters. / Give 100 cc's.
+  - 返答: Giving 100.
+  - 注記: [要確認] 離脱後に送血管から補液する考え方は教科書で確認できましたが、"Give 100." を決まった言い回しとする出典は確認できていません。 / [安全] 追加で入れるときは、送血管内に空気がないことを確かめます。 / [施設差] 1回に入れる量や追加の刻みを定めた資料はなく、施設・術者の具体的な指示によります（100 は例）。
+- **wea-09** あなた（臨床工学技士）→外科医｜**The pump is ready if we need to go back on.**｜必要ならいつでも再開できるよう、ポンプは準備しています。｜出典未確認｜要確認を含む
+  - 言い方の幅: We can go back on bypass anytime. / I'm ready to go back on.
+  - 返答: Good. Keep it ready.
+  - 注記: [コツ] 胸骨を閉じるまでは、回路を使える状態に保つことが推奨されています（EACTS）。国内2007年ガイドラインも、回路を廃棄するまで再開できる態勢を求めています。 / [要確認] この言い回しは出典で確認できていません（"back on" という言い方は確認済み）。
+
+## 12. プロタミン・抜去（Protamine & Decannulation）
+
+- **pro-01** 外科医→麻酔科医｜**Start protamine.**｜プロタミンを始めて。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: Please start the protamine. / Let's give protamine.
+  - 返答: Protamine is going in.
+  - 注記: [施設差] プロタミンの量は、国内の添付文書（ヘパリン 1,000 単位に 10〜15 mg）と EACTS 2024（中和比 1.0 未満）で異なります。投与とカニューレ抜去の順序も施設で違います。
+- **pro-02** 麻酔科医→全員｜**Protamine is going in.**｜プロタミンを入れています。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: I'm giving the protamine now. / Protamine started.
+  - 返答: Pump suckers off.
+  - 注記: [安全] この宣言を聞いたら、すぐにポンプサッカーを止めます（AmSECT・ANZCP の基準、EACTS 2024）。
+- **pro-03** 外科医→あなた（臨床工学技士）｜**Stop pump suckers.**｜ポンプサッカーを止めて。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: Please turn off the pump suckers. / Suckers off, please.
+  - 返答: Pump suckers off.
+- **pro-04** あなた（臨床工学技士）→全員｜**Pump suckers off.**｜ポンプサッカー止めました。｜論文・基準で確認｜AI下書き・未監修
+  - 言い方の幅: The pump suckers are off. / Protamine's going in, so suckers are off.
+  - 返答: Suckers off. Thanks.
+  - 注記: [安全] プロタミンを含む血液が回路に戻ると回路内で固まり、緊急時に体外循環を再開できなくなるおそれがあります。開始と同時に止めるのが基準です。 / [コツ] "pump suckers off"（サッカー停止）と "pump off"（ポンプ停止）は聞き違えやすいので、"suckers" をはっきり言います。
+- **pro-05** 麻酔科医→全員｜**Giving a test dose of protamine.**｜プロタミンをテストドースで入れます。｜出典未確認｜要確認を含む
+  - 言い方の幅: I'm giving a small test dose of protamine. / Test dose going in.
+  - 返答: Pump suckers off.
+  - 注記: [安全] テストドースだけでも ACT は大きく下がりうる（前向き研究で平均 40% 低下）ため、テストドースの時点でサッカーを止める考え方があります。 / [施設差] テストドースを使うか、その量は施設・麻酔科医で異なります。 / [要確認] "test dose" という語は確認済みですが、この宣言の言い回しは出典で確認できていません。
+- **pro-06** あなた（臨床工学技士）→全員｜**Stop! We're still on bypass. Hold the protamine.**｜待って！まだ体外循環中です。プロタミンは入れないで。｜出典未確認｜要確認を含む
+  - 言い方の幅: Wait. We're on bypass. No protamine. / Hold the protamine — we're still on pump.
+  - 返答: Holding. No protamine given.
+  - 注記: [安全] 外科医の Prolene（縫合糸）の依頼をプロタミンと聞き違えた可能性があり、体外循環中だったため技士がすぐに指摘した実例が豪州・NZで報告されています。 / [要確認] 指摘した行動は確認済みですが、この言い回しそのものは出典で確認できていません。
+- **pro-07** 外科医→あなた（臨床工学技士）｜**How much is left in the pump?**｜ポンプに残っているのはどれくらい？｜出典未確認｜要確認を含む
+  - 言い方の幅: How much blood is in the pump?
+  - 返答: There's 600 left in the pump.
+  - 注記: [要確認] 残血量を伝えることはオランダの品質基準の項目（"Blood volume left in pump"）で確認できましたが、この質問の言い回しは確認できていません。
+- **pro-08** あなた（臨床工学技士）→外科医｜**There's 600 left in the pump.**｜ポンプに600（mL）残っています。｜出典未確認｜要確認を含む
+  - 言い方の幅: About 600 milliliters are left in the pump. / Pump volume is 600.
+  - 返答: Thanks. We'll give some back.
+  - 注記: [コツ] 単位（mL）は言わないことが多いです。 / [要確認] この言い回しは出典で確認できていません（残血量を伝える項目は確認済み）。
+- **pro-09** あなた（臨床工学技士）→外科医｜**Do you want the rest of the pump blood?**｜ポンプの残りの血液を返しますか？｜出典未確認｜要確認を含む
+  - 言い方の幅: Should I give back the rest of the blood? / Do you want the rest, or should it go to the cell saver?
+  - 返答: Send the rest to the cell saver.
+  - 注記: [施設差] 必要な量だけポンプから返血し、残りをセルセーバーに回した報告があります。返し方は施設で異なります。 / [要確認] この言い回しは出典で確認できていません。
+- **pro-10** 外科医→全員｜**Venous cannula out.**｜脱血管を抜いた。｜出典未確認｜要確認を含む
+  - 言い方の幅: The venous cannula is out. / Venous cannula removed.
+  - 返答: Venous cannula out. Draining the venous line.
+  - 注記: [コツ] 抜去の順序（脱血管 → 送血管）や、プロタミンとの順番は施設で異なります。 / [要確認] オランダの品質基準の項目（Venous canule removed、英訳）をもとにした言い方で、"out" を使う発話は確認できていません。
+
+## 20. 送血圧の上昇（High Line Pressure）
+
+- **tpr-01** あなた（臨床工学技士）→外科医｜**My line pressure is high.**｜送血ライン圧が高いです。｜動画・報告で確認｜要確認を含む
+  - 言い方の幅: The line pressure is high. / I've got high line pressure.
+  - 返答: High line pressure? What's the number?
+  - 注記: [要確認] 米国の訓練動画（大動脈解離の回）の自動字幕からの起こしで、確度が低い表現です（"line" は調査者の補い）。音声での確認が必要です。 / [コツ] "my" は「ポンプ側の（自分が見ている）」という意味です。技士は "my level" "my venous return" のように自分の装置の値を my で言います。
+- **tpr-02** あなた（臨床工学技士）→外科医｜**Line pressure is high, 360. Radial pressure is low, mean 32. I'm coming down on flow.**｜送血ライン圧が高く、360です。橈骨動脈圧は低く、平均32です。流量を下げます。｜出典未確認｜要確認を含む
+  - 言い方の幅: The line pressure is 360. The blood pressure is low, mean 32. I'm lowering the flow. / Line pressure 360, radial mean 32. Coming down on flow.
+  - 返答: 360 and a mean of 32. Keep the flow down.
+  - 注記: [コツ] 「送血ライン圧が高いのに動脈圧が低い」は解離を疑う組み合わせです。2つの数値と自分の行動を続けて伝えます。 / [施設差] 送血ライン圧の警報値・許容値は回路とカニューレで異なります（360 は例）。 / [要確認] 伝える項目（ライン圧と動脈圧）は出典で確認できましたが、この言い回しそのものは確認できていません。
+- **tpr-03** あなた（臨床工学技士）→外科医｜**I can't flow higher than 1.5 liters a minute.**｜1.5 L/分より上げられません。｜動画・報告で確認｜要確認を含む
+  - 言い方の幅: I can only give 1.5 liters a minute. / I can't get more than 1.5 liters.
+  - 返答: Only 1.5 liters? Hold there.
+  - 注記: [要確認] 米国の訓練動画の自動字幕からの起こしで、確度が低い表現です（"flow" は調査者の補い）。 / [コツ] 流量は単位を省いて数字だけで言うことも多いので、"1.5" だけでも聞き取れるようにします。
+- **tpr-04** あなた（臨床工学技士）→外科医｜**All clamps are off. No kinks in the line.**｜鉗子はすべて外れています。ラインの屈曲もありません。｜出典未確認｜要確認を含む
+  - 言い方の幅: No clamps, no kinks. / Clamps are off. No kinks.
+  - 返答: Clamps off, no kinks. Then it could be a dissection.
+  - 注記: [コツ] 送血ライン圧の上昇の原因には、鉗子の外し忘れ・回路の屈曲・カニューレの先当たり・送血フィルターの目詰まり・解離などが挙げられています。確かめた候補から一つずつ消していきます。 / [要確認] 報告の言い回しは自然な英語ですが、出典で確認できていません。
+- **tpr-05** 外科医→あなた（臨床工学技士）｜**I don't see anything on the field. Check your clamps and lines.**｜術野には何も見当たらない。鉗子とラインを確認して。｜出典未確認｜要確認を含む
+  - 言い方の幅: Nothing is wrong on the field. Please check your clamps and lines. / Field looks fine. Check your side.
+  - 返答: Checking my clamps and lines now.
+  - 注記: [要確認] 前半は米国の訓練動画の自動字幕からの起こしで確度が低く、後半（Check your clamps and lines.）は補った言い方で出典では確認できていません。 / [コツ] "on the field" は「術野で」。外科医の側に原因が見当たらないという意味です。
+- **tpr-06** 外科医→麻酔科医｜**Do we have a dissection? Can you look at the echo?**｜解離か？エコーで見てくれる？｜動画・報告で確認｜要確認を含む
+  - 言い方の幅: Is it a dissection? Please check the echo. / Can you check the TEE for a dissection? / Can you check the TOE for a dissection?
+  - 返答: Looking at the echo now.
+  - 注記: [要確認] 米国の訓練動画の自動字幕からの起こしで、確度が低い表現です。 / [地域差] 経食道心エコーは米国で TEE、英国・豪州・欧州では TOE と言います。
+- **tpr-07** 麻酔科医→外科医｜**I see a flap in the ascending aorta.**｜上行大動脈にフラップが見えます。｜動画・報告で確認｜要確認を含む
+  - 言い方の幅: There is a flap in the ascending aorta. / There's definitely a flap in the ascending.
+  - 返答: A flap in the ascending aorta. That's a dissection.
+  - 注記: [要確認] 米国の訓練動画の自動字幕（"…definitely a flap in the ascending aorta"）からの起こしで、確度が低い表現です。 / [コツ] 医原性の大動脈解離は、送血管の挿入部や遮断部に多いとされます。
+- **tpr-08** 外科医→あなた（臨床工学技士）｜**Stop the pump. We'll go back on in the groin.**｜ポンプを止めて。鼠径部（大腿動脈）から再開する。｜出典未確認｜要確認を含む
+  - 言い方の幅: Please stop the pump. We will restart from the femoral artery. / Pump off. We'll go back on in the groin.
+  - 返答: Pump is off. Arterial line clamped.
+  - 注記: [要確認] "go back on in the groin" は米国の訓練動画の自動字幕からの起こしで、確度が低い表現です。"Stop the pump." は補った言い方です。 / [コツ] "back on" は体外循環を再開すること、"back up" は流量を戻すことです。聞き違えないようにします。
+
+## 21. 空気混入（Air in the Circuit）
+
+- **tai-01** あなた（臨床工学技士）→全員｜**Stop! Air in the line!**｜止めて！ラインに空気！｜動画・報告で確認｜要確認を含む
+  - 言い方の幅: Stop! There's air in the line! / Air in the arterial line!
+  - 返答: Air in the line? Is the pump off?
+  - 注記: [安全] 送血ラインに空気を見たら、ポンプを止めて送血ラインを遮断し、すぐ外科医に知らせます。説明は止めてからで構いません。 / [要確認] 豪NZの報告の記述（that there was air in the line）をもとにした言い方です。叫ぶときの言い回しそのものは確認できていません。
+- **tai-02** あなた（臨床工学技士）→外科医｜**Pump is off. Arterial line clamped.**｜ポンプ停止。送血ラインを遮断しました。｜動画・報告で確認｜要確認を含む
+  - 言い方の幅: The pump is off. I clamped the arterial line. / Pump's off and the arterial line's clamped.
+  - 返答: Pump off, line clamped. Understood.
+  - 注記: [コツ] 空気の混入では「空気を見たこと」と「ポンプを止めたこと」を伝える項目に挙げた調査があります。 / [要確認] 豪NZの報告（流量をゼロにして送血ラインを遮断した）と米国の調査の記述をもとにした言い方です。
+- **tai-03** あなた（臨床工学技士）→外科医｜**Bubble detector alarm. The pump has stopped.**｜気泡検出器のアラームです。ポンプが止まりました。｜出典未確認｜要確認を含む
+  - 言い方の幅: The bubble alarm stopped the pump. / Bubble alarm. The pump's stopped.
+  - 返答: Bubble alarm. Is there air in the line?
+  - 注記: [施設差] 送血回路の気泡検出器は日本の安全装置設置基準で必須です。検出したときに送血ポンプを止める制御は「強く推奨」で、止まらない装置・設定もあります。 / [要確認] この言い回しは自然な英語ですが、出典で確認できていません。
+- **tai-04** 外科医→あなた（臨床工学技士）｜**Did any air get to the patient?**｜空気は患者さんに入った？｜出典未確認｜要確認を含む
+  - 言い方の幅: Did air go into the patient? / Any air to the patient?
+  - 返答: Some may have. I stopped the pump as soon as I saw it.
+  - 注記: [コツ] 分からないことは「入ったかもしれない」と正直に言い、何をしたか（すぐ止めた）を続けます。 / [要確認] この質問の言い回しは出典で確認できていません。
+- **tai-05** 外科医→麻酔科医｜**Head down, please. Steep Trendelenburg.**｜頭を下げて。急な頭低位に。｜出典未確認｜要確認を含む
+  - 言い方の幅: Please put the head down. / Can we go steep head down?
+  - 返答: Going head down now. Steep Trendelenburg.
+  - 注記: [コツ] 大量空気塞栓の初期対応として、体外循環の停止と急な頭低位が挙げられています。 / [要確認] 教科書の用語（steep Trendelenburg position）をもとにした言い方で、口頭の指示としては確認できていません。
+- **tai-06** あなた（臨床工学技士）→看護師｜**Can you get the air embolism checklist and read it out?**｜空気塞栓のチェックリストを持ってきて、読み上げてもらえますか？｜出典未確認｜要確認を含む
+  - 言い方の幅: Please read the air embolism checklist for us. / Can you be the reader for the air embolism checklist?
+  - 返答: Getting the air embolism checklist. I'll read it out.
+  - 注記: [コツ] 危機チェックリストを読み上げる係（reader）を決め、手を動かす人が手順を飛ばさないようにする方法が研究されています。 / [施設差] 国内の 2007 年のガイドラインは危機管理マニュアルの整備を求めています。チェックリストの形と読み上げ役は施設で決めます。 / [要確認] 頼み方の言い回しは出典で確認できていません。
+- **tai-07** 外科医→あなた（臨床工学技士）｜**Get ready for retrograde perfusion through the SVC.**｜上大静脈からの逆行性灌流の準備をして。｜出典未確認｜要確認を含む
+  - 言い方の幅: We'll perfuse retrograde through the SVC. Get ready. / Set up for retrograde through the SVC.
+  - 返答: Retrograde through the SVC. Getting ready now.
+  - 注記: [安全] 逆行性灌流の流量・温度・時間などの数値はここでは扱いません。手順は施設の危機管理マニュアルと外科医の指示に従います。 / [要確認] 上大静脈からの逆行性灌流は出典に記載がありますが、この指示の言い回しは確認できていません。
+- **tai-08** あなた（臨床工学技士）→外科医｜**The line is clear of air. Ready to go back on.**｜ラインの空気は抜けました。再開できます。｜出典未確認｜要確認を含む
+  - 言い方の幅: There is no air in the line now. We can restart. / Line's de-aired. Ready when you are.
+  - 返答: Line is clear. Going back on.
+  - 注記: [安全] 再開してよいかの判断は外科医が行います。技士は「再開できる状態になった」ことを伝えます。 / [要確認] この言い回しは自然な英語ですが、出典で確認できていません。
+
+## 22. 脱血不良・レベル低下（Poor Drainage & Low Level）
+
+- **tdr-01** あなた（臨床工学技士）→外科医｜**My level is dropping. Is the heart up?**｜レベルが下がっています。心臓を持ち上げていますか？｜動画・報告で確認｜要確認を含む
+  - 言い方の幅: The level is going down. Are you lifting the heart? / I'm losing my level. Is the heart up?
+  - 返答: Yes, I need a minute here.
+  - 注記: [要確認] 豪NZの報告の記述（容量の減少に気づき、心臓を持ち上げていないか外科医に尋ねた）をもとにした言い方です。 / [コツ] レベルの低下は、原因の候補（心臓の持ち上げ・脱血ラインの屈曲・カニューレの位置・容量不足など）と一緒に早めに伝えます。 / [安全] 貯血槽のレベルセンサーは日本の安全装置設置基準で必須です。2009 年の厚労省通知は、レベル低下の見落としが空気誤送の要因になった事例を挙げています。
+- **tdr-02** あなた（臨床工学技士）→外科医｜**I'm coming down to 4 liters.**｜流量を4 L/分に下げます。｜出典未確認｜要確認を含む
+  - 言い方の幅: I'm lowering the flow to 4 liters. / Coming down to 4.
+  - 返答: Down to 4. That's fine.
+  - 注記: [コツ] "come down to ○○" の形で、下げた先の数値を言うと相手が状況をつかめます。 / [施設差] どこまで流量を下げるかは状況と施設の取り決めによります（4 L は例）。 / [要確認] この言い回しは自然な英語ですが、出典で確認できていません。
+- **tdr-03** あなた（臨床工学技士）→麻酔科医｜**Can I have some volume, please?**｜ボリューム（輸液・血液）をいただけますか？｜出典未確認｜要確認を含む
+  - 言い方の幅: I need more volume, please. / Could you give me some volume?
+  - 返答: Giving you some volume now.
+  - 注記: [施設差] 回路（リザーバー）に補液するときは、日本では医師の具体的な指示のもとで行います（臨床工学技士法第38条）。誰がどこから入れるかは施設の取り決めによります。 / [要確認] 依頼の言い回しは自然な英語ですが、出典で確認できていません。
+- **tdr-04** 外科医→あなた（臨床工学技士）｜**Pump sucker high, please.**｜ポンプサッカーを強くして。｜動画・報告で確認｜要確認を含む
+  - 言い方の幅: Please turn the sucker up. / More sucker, please.
+  - 返答: Pump sucker high.
+  - 注記: [要確認] 豪NZの報告の記述（the surgeon asked for pump sucker high）をもとにした言い方です。 / [コツ] "pump sucker"（サッカー）と "pump"（送血ポンプ）を聞き分けます。返事は指示をそのまま返します。
+- **tdr-05** あなた（臨床工学技士）→外科医｜**Air lock in the venous line! I'm stopping the pump.**｜脱血ラインにエアロック！送血を止めます。｜出典未確認｜要確認を含む
+  - 言い方の幅: There's an air lock in the venous line. I'm stopping the pump. / Venous air lock! Pump off.
+  - 返答: Okay. What do you need?
+  - 注記: [安全] 多量の空気で落差脱血ができないときは、送血を止めて原因を除き、空気をリザーバーへ導いてから、ゆっくり再開します（JaSECT ハンドブック）。脱血が止まったまま送血を続けると、リザーバーが空になって空気を送るおそれがあります。 / [施設差] 少量の空気の流入なら、貯血レベルを下げて静脈圧を少し高めにすると止まるとされます（JaSECT ハンドブック）。どこまで流量の調整で対処するかは、施設の手順と外科医の判断によります。 / [要確認] 豪NZの報告の記述（forming an air lock. Informed the surgeon. / pump off）と教科書の用語をもとに作った言い方で、この文そのものは出典で確認できていません。 / [コツ] 脱血ラインに空気が入って落差脱血が止まる状態を air lock と言います。 / [安全] venous（脱血）と arterial（送血）を取り違えると対応が大きく変わるので、場所をはっきり言います。
+- **tdr-06** 外科医→あなた（臨床工学技士）｜**Pump off.**｜ポンプを止めて。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Stop the pump. / Turn the pump off.
+  - 返答: Pump off. Zero flow.
+  - 注記: [コツ] "pump off"（送血ポンプ停止）と "pump suckers off"（サッカー停止）は聞き違えやすい組み合わせです。 / [コツ] 豪NZの報告では、エアロックのとき外科医が小声で "pump off" と求め、技士は流量をゼロにして送血ラインを遮断しました。
+- **tdr-07** あなた（臨床工学技士）→外科医｜**I can refill the venous line from my end.**｜脱血ラインはこちら（ポンプ側）から満たし直せます。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: I can fill the venous line again from the pump side. / Disconnect the venous line and I'll refill it.
+  - 返答: Go ahead. Tell me when it's full.
+  - 注記: [コツ] 豪NZの報告にある技士の言い方です。"from my end" は「ポンプ側から」という意味です。 / [施設差] エアロックの解除の仕方（空気をリザーバーへ導く、ラインを満たし直すなど）は、回路と施設の手順によります。
+- **tdr-08** 外科医→あなた（臨床工学技士）｜**Go ahead. Tell me when it's full.**｜どうぞ。満たせたら教えて。｜出典未確認｜要確認を含む
+  - 言い方の幅: Okay, do it. Tell me when the line is full. / Go for it. Let me know when it's full.
+  - 返答: Refilling now. I'll tell you when it's full.
+  - 注記: [コツ] "Tell me when …" と頼まれたら、"I'll tell you when …" と主語を変えて返すと復唱になります。 / [要確認] この言い回しは自然な英語ですが、出典で確認できていません。
+
+## 23. 酸素化不良（Oxygenator Problems）
+
+- **tox-01** 助手→あなた（臨床工学技士）｜**The blood is very dark.**｜血がとても暗い。｜動画・報告で確認｜要確認を含む
+  - 言い方の幅: The blood looks dark. / That blood's really dark.
+  - 返答: Dark blood. Checking my gas now.
+  - 注記: [要確認] 豪NZの報告の記述（the surgical registrar announced the blood was very dark）をもとにした言い方です。この事例では、開始時にガス流量がゼロのままでした。 / [地域差] registrar は英国・豪州の医師の職位で、専門研修中の医師にあたります。
+- **tox-02** 麻酔科医→あなた（臨床工学技士）｜**What's your PO2?**｜PO2 はいくつ？｜出典未確認｜要確認を含む
+  - 言い方の幅: What is the PO2? / What's your arterial PO2 on the pump?
+  - 返答: Only 80. It's not coming up.
+  - 注記: [コツ] 人工肺の不全では、PO2 と酸素飽和度を伝える項目に挙げた調査があります。聞かれたら数値で返します。 / [要確認] この質問の言い回しは出典で確認できていません。
+- **tox-03** あなた（臨床工学技士）→外科医｜**My sweep is on, but the PO2 is only 80.**｜ガスは流れていますが、PO2 が80しかありません。｜出典未確認｜要確認を含む
+  - 言い方の幅: The gas is on, but the PO2 is only 80. / Sweep's on and I'm still only at a PO2 of 80.
+  - 返答: Only 80. Is it the oxygenator?
+  - 注記: [コツ] "sweep" は人工肺に流すガス（の流量）のことです（"I've got sweep on" のように言います）。 / [施設差] 今回の調査では、体外循環中の PaO2 の目標値を定めたガイドラインを確認できていません。低いと判断する値は施設と状況によります（80 は例）。 / [要確認] 伝える項目（PO2）は出典で確認できましたが、この言い回しは確認できていません。
+- **tox-04** あなた（臨床工学技士）→外科医｜**I think the oxygenator is failing. Let's get ready to change it out.**｜人工肺の機能が落ちているようです。交換の準備をしましょう。｜出典未確認｜要確認を含む
+  - 言い方の幅: The oxygenator may not be working well. Let's prepare a new one. / We may need to change out the oxygenator.
+  - 返答: Okay. Get ready and tell me before you stop the pump.
+  - 注記: [安全] 交換を考える前に、ガスの供給（配管・ブレンダー・接続）と設定を確かめます。JaSECT ハンドブックでは、酸素流量を上げつつ交換または追加の準備をするとしています。交換を決めるのは外科医・麻酔科医との相談のうえです。 / [要確認] 豪NZの報告の記述（change out the oxygenator）をもとに作った言い方で、この文そのものは出典で確認できていません。 / [施設差] 交換の方法（送血を止めて入れ替える、新しい人工肺を並列に組み込むなど）は、施設で訓練された手順に従います。
+- **tox-05** あなた（臨床工学技士）→看護師｜**Call another perfusionist, please. I need help.**｜もう一人技士を呼んでください。応援が必要です。｜出典未確認｜要確認を含む
+  - 言い方の幅: Please call another perfusionist. / Can you get me another perfusionist?
+  - 返答: Calling another perfusionist now.
+  - 注記: [要確認] 豪NZの報告の記述（Called for help）をもとにした言い方です。 / [地域差] 英国では perfusionist を clinical perfusion scientist と呼びます。
+- **tox-06** あなた（臨床工学技士）→看護師｜**Can you bring in the change-out kit?**｜人工肺の交換用セットを持ってきてもらえますか？｜出典未確認｜要確認を含む
+  - 言い方の幅: Please bring the oxygenator change-out kit. / I need the change-out kit in here, please.
+  - 返答: Bringing the change-out kit now.
+  - 注記: [要確認] 豪NZの報告の記述（交換用セットと予備の送血ポンプを手術室に運び込んだ）をもとにした言い方です。 / [施設差] 交換用の人工肺・回路の準備と置き場所は、施設で決めておきます。
+- **tox-07** 外科医→あなた（臨床工学技士）｜**Tell me before you stop the pump.**｜ポンプを止める前に教えて。｜出典未確認｜要確認を含む
+  - 言い方の幅: Please tell me before the pump stops. / Give me a warning before you stop.
+  - 返答: I'll tell you before I stop the pump.
+  - 注記: [コツ] 実際に止めるときも "Stopping the pump now." のように一言かけると、術野の操作と合わせやすくなります。 / [要確認] この依頼の言い回しは出典で確認できていません。止める必要があるかは交換の方法によります。
+
+## 24. 停電・ポンプ停止（Power or Pump Failure）
+
+- **tpw-01** あなた（臨床工学技士）→全員｜**Power failure. The pump is on battery.**｜停電です。ポンプはバッテリーで動いています。｜出典未確認｜要確認を含む
+  - 言い方の幅: The power is out. The pump is running on battery. / We've lost power. I'm on battery.
+  - 返答: On battery. Tell me if anything changes.
+  - 注記: [施設差] 人工心肺装置のバッテリー内蔵は日本の安全装置設置基準で必須です。停電時はまずバッテリー駆動に切り替わったかを確かめます。 / [要確認] この言い回しは自然な英語ですが、出典で確認できていません。
+- **tpw-02** あなた（臨床工学技士）→全員｜**Pump failure. I'm hand cranking. Call for help.**｜ポンプが止まりました。手回ししています。応援を呼んでください。｜動画・報告で確認｜要確認を含む
+  - 言い方の幅: The pump stopped. I'm turning it by hand. Please call for help. / Pump's down. Hand cranking. Get me some help, please.
+  - 返答: Calling for help now.
+  - 注記: [コツ] 状況（Pump failure）・行動（hand cranking）・依頼（Call for help）を一息で言います。 / [安全] 送血ポンプの手動装置は日本の安全装置設置基準で必須で、米国の基準も "readily available" を求めています。 / [要確認] 豪NZの報告の記述（Called for help / commenced brief hand cranking）をもとにした言い方です。
+- **tpw-03** あなた（臨床工学技士）→外科医｜**I'm hand cranking at about 4 liters. Level is steady.**｜手回しで約4 L/分です。レベルは安定しています。｜出典未確認｜要確認を含む
+  - 言い方の幅: I'm turning the pump by hand at about 4 liters. The level is stable. / Cranking at about 4 liters, level's holding.
+  - 返答: About 4 liters, level steady. Keep going.
+  - 注記: [コツ] ポンプの故障では流量を伝える項目に挙げた調査があります。手回し中は停電前のレベルと血圧を保つのが目安です。 / [施設差] 4 L/分は例です。目標流量は患者と施設の設定によります。 / [要確認] この言い回しは自然な英語ですが、出典で確認できていません。
+- **tpw-04** あなた（臨床工学技士）→看護師｜**Can someone shine a flashlight on my reservoir?**｜誰か懐中電灯でリザーバーを照らしてもらえますか？｜出典未確認｜要確認を含む
+  - 言い方の幅: Please light up my reservoir. / Can someone shine a torch on my reservoir?
+  - 返答: Shining the flashlight on your reservoir.
+  - 注記: [地域差] 懐中電灯は米国で flashlight、英国では torch と言います。 / [コツ] 停電時は懐中電灯でリザーバーのレベルを確かめる、と国内のハンドブックにあります。 / [要確認] 頼み方の言い回しは自然な英語ですが、出典で確認できていません。
+- **tpw-05** 麻酔科医→あなた（臨床工学技士）｜**Mean is 45. Can you give more flow?**｜平均圧が45です。流量を増やせますか？｜出典未確認｜要確認を含む
+  - 言い方の幅: The mean pressure is 45. Please give more flow. / I've got a mean of 45. More flow, please?
+  - 返答: Mean 45. Giving more flow now.
+  - 注記: [コツ] 体外循環中の平均血圧は 50〜80 mmHg に保つことが推奨されています。45 はそれより低い例です。 / [要確認] この言い回しは自然な英語ですが、出典で確認できていません。
+- **tpw-06** 看護師→あなた（臨床工学技士）｜**Help is on the way.**｜応援がこちらに向かっています。｜出典未確認｜要確認を含む
+  - 言い方の幅: Help is coming. / Someone's on their way.
+  - 返答: Thanks. I'll keep cranking until help arrives.
+  - 注記: [コツ] 返事の "until help arrives" は、豪NZの報告の「応援が来るまで手回しした」という記述にもとづく言い方です。 / [要確認] この知らせの言い回しは自然な英語ですが、出典で確認できていません。
+
+## 25. ACT低値（Low ACT）
+
+- **tac-01** あなた（臨床工学技士）→麻酔科医｜**The ACT just stopped at 280 seconds. I recommend giving another 10,000 units.**｜ACT は280秒で確定しました。ヘパリンをさらに1万単位入れることをお勧めします。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: The ACT is 280. Can we give 10,000 more units? / ACT stopped at 280. I'd suggest another 10,000 units.
+  - 返答: Another 10,000 units of heparin going in at 9:12.
+  - 注記: [コツ] 値（stopped at 280）と提案（another 10,000 units）をセットで言うと、相手がすぐ判断できます。 / [施設差] 目標の ACT と追加するヘパリンの量は施設のプロトコルによります（量は例）。
+- **tac-02** 外科医→あなた（臨床工学技士）｜**Is the ACT up yet?**｜ACT はもう上がった？｜出典未確認｜要確認を含む
+  - 言い方の幅: Is the ACT high enough now? / Where's your ACT now?
+  - 返答: Not yet. It's 380 and rising.
+  - 注記: [コツ] 測定中なら "380 and rising"（まだ上昇中）、測定が終われば "stopped at 520"（確定値）と言い分けます。 / [要確認] この質問の言い回しは出典で確認できていません（返事の "… and rising" は米国の訓練動画にある言い方です）。
+- **tac-03** 外科医→あなた（臨床工学技士）｜**Just go on bypass.**｜とにかく体外循環を始めて。｜動画・報告で確認｜AI下書き・未監修
+  - 言い方の幅: Please start bypass now. / Let's just go on.
+  - 返答: Not until the ACT is over 400.
+  - 注記: [コツ] 急かされても、理由（ACT の値）を短く言って待ってもらいます。豪NZの報告では、技士が ACT 400 秒を超えるまでサッカーも開始も断った事例が紹介されています。
+- **tac-04** あなた（臨床工学技士）→外科医｜**I can't go on bypass until the ACT is over 400.**｜ACT が400を超えるまでは、体外循環を始められません。｜出典未確認｜要確認を含む
+  - 言い方の幅: Please wait. The ACT must be over 400. / We need an ACT over 400 before we go on.
+  - 返答: Fine. Recheck the ACT and tell me.
+  - 注記: [要確認] 豪NZの報告の記述（ACT が 400 秒を超えるまで技士が開始を断った）をもとにした言い方です。 / [施設差] 開始してよい ACT は機器・回路・施設で異なります（480 秒超が代表的で、最大活性化型の機器では 400 秒超とすることも多い）。
+- **tac-05** あなた（臨床工学技士）→麻酔科医｜**ACT is 350 after 300 units per kilo. Could this be heparin resistance?**｜300単位/kg 入れて ACT が350です。ヘパリン抵抗性でしょうか？｜出典未確認｜要確認を含む
+  - 言い方の幅: The ACT is only 350 after 300 units per kilo. Maybe it is heparin resistance. / Only 350 on 300 units a kilo. I'm worried about heparin resistance.
+  - 返答: Heparin resistance? Let's check the antithrombin.
+  - 注記: [コツ] 300 単位/kg を投与しても ACT が 400 秒未満、がヘパリン抵抗性の定義の一例です。 / [施設差] ヘパリンの初回量は、国内添付文書で 150〜300 単位/kg、海外ガイドライン本文で 300〜500（600）U/kg と差があります。 / [要確認] 相談の言い回しは自然な英語ですが、出典で確認できていません。
+- **tac-06** 麻酔科医→あなた（臨床工学技士）｜**We may need antithrombin or FFP.**｜アンチトロンビンか FFP が必要かもしれない。｜出典未確認｜要確認を含む
+  - 言い方の幅: Maybe we need to give antithrombin or FFP. / We might have to give antithrombin or FFP.
+  - 返答: Antithrombin or FFP. I'll recheck the ACT after it goes in.
+  - 注記: [安全] 国内の AT 製剤の効能には、CPB 中のヘパリン抵抗性が含まれていません。使うかどうかは施設の取り決めを確かめます。 / [コツ] 海外のガイドラインは、AT 欠乏によるヘパリン抵抗性に AT 製剤を推奨し、AT 製剤がなければ FFP を挙げています。 / [要確認] この言い回しは自然な英語ですが、出典で確認できていません。
+- **tac-07** あなた（臨床工学技士）→全員｜**Can we run the heparin resistance checklist?**｜ヘパリン抵抗性のチェックリストに沿って進めませんか？｜出典未確認｜要確認を含む
+  - 言い方の幅: Let's use the heparin resistance checklist. / Can someone read out the heparin resistance checklist?
+  - 返答: Getting the heparin resistance checklist. I'll read it out.
+  - 注記: [コツ] ヘパリン抵抗性には危機チェックリストを使うことが推奨され、読み上げ役を決めて進める方法が研究されています。 / [要確認] 提案の言い回しは自然な英語ですが、出典で確認できていません。
+- **tac-08** あなた（臨床工学技士）→外科医｜**Repeat ACT is 520. We're good to go on bypass.**｜再検の ACT は520です。体外循環を始められます。｜出典未確認｜要確認を含む
+  - 言い方の幅: The new ACT is 520. We can start bypass. / ACT's 520 now. Ready to go on.
+  - 返答: 520. Okay, let's go on bypass.
+  - 注記: [施設差] 開始してよい ACT の値は施設のプロトコルによります（520 は例）。 / [要確認] この言い回しは自然な英語ですが、出典で確認できていません。

@@ -1,0 +1,287 @@
+@import 'tailwindcss';
+
+/* ===== デザイントークン =====
+   明るい学習面（--bg/--card）と、暗いシミュレーターのコンソール（--console-*）の2面構成。
+   色の意味: brand=ティール（主色・あなた）/ art=送血（赤）/ ven=脱血（青）/ warn=注意 / ok / ng */
+:root {
+  color-scheme: light;
+  --bg: #f2f5f9;
+  --card: #ffffff;
+  --card-2: #f7f9fc;
+  --ink: #0b1f3a;
+  --sub: #55667f;
+  --faint: #8494aa;
+  --line: #dfe6ef;
+  --navy: #0b1f3a;
+  --brand: #0e9f92;
+  --brand-ink: #087a70;
+  --brand-soft: #def5f1;
+  --art: #e23d55;
+  --art-soft: #fde8eb;
+  --ven: #2f7bf6;
+  --ven-soft: #e5efff;
+  --warn: #b86b00;
+  --warn-soft: #fff3dc;
+  --ok: #138a55;
+  --ok-soft: #e0f5ea;
+  --ng: #cf3445;
+  --ng-soft: #fde7e9;
+  --violet: #6457d6;
+  --violet-soft: #ecebff;
+  --shadow: 0 1px 2px rgb(11 31 58 / 6%), 0 4px 16px rgb(11 31 58 / 6%);
+  --console-bg: #050c18;
+  --console-panel: #0c1a2e;
+  --console-line: #1c3150;
+  --console-ink: #d9e6f5;
+  --console-sub: #7f95b3;
+  --seg-flow: #43e3c8;
+  --seg-map: #ff6b81;
+  --seg-temp: #ffc35a;
+  --seg-act: #b6a7ff;
+  --seg-svo2: #6fb2ff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #07111f;
+    --card: #0e1c31;
+    --card-2: #12233c;
+    --ink: #e7eef8;
+    --sub: #9db0c9;
+    --faint: #6f84a1;
+    --line: #1d324f;
+    --brand: #2cc7b7;
+    --brand-ink: #62e1d3;
+    --brand-soft: #0d3431;
+    --art: #ff6278;
+    --art-soft: #3a1520;
+    --ven: #6aa5ff;
+    --ven-soft: #132a4d;
+    --warn: #ffbf57;
+    --warn-soft: #3a2a0d;
+    --ok: #45d08e;
+    --ok-soft: #0f3324;
+    --ng: #ff6b7a;
+    --ng-soft: #3d1419;
+    --violet: #a59bff;
+    --violet-soft: #221f4a;
+    --shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 4px 18px rgb(0 0 0 / 25%);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #07111f;
+  --card: #0e1c31;
+  --card-2: #12233c;
+  --ink: #e7eef8;
+  --sub: #9db0c9;
+  --faint: #6f84a1;
+  --line: #1d324f;
+  --brand: #2cc7b7;
+  --brand-ink: #62e1d3;
+  --brand-soft: #0d3431;
+  --art: #ff6278;
+  --art-soft: #3a1520;
+  --ven: #6aa5ff;
+  --ven-soft: #132a4d;
+  --warn: #ffbf57;
+  --warn-soft: #3a2a0d;
+  --ok: #45d08e;
+  --ok-soft: #0f3324;
+  --ng: #ff6b7a;
+  --ng-soft: #3d1419;
+  --violet: #a59bff;
+  --violet-soft: #221f4a;
+  --shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 4px 18px rgb(0 0 0 / 25%);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-card-2: var(--card-2);
+  --color-ink: var(--ink);
+  --color-sub: var(--sub);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-navy: var(--navy);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
+  --color-art: var(--art);
+  --color-art-soft: var(--art-soft);
+  --color-ven: var(--ven);
+  --color-ven-soft: var(--ven-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-ng: var(--ng);
+  --color-ng-soft: var(--ng-soft);
+  --color-violet: var(--violet);
+  --color-violet-soft: var(--violet-soft);
+  --color-console: var(--console-bg);
+  --color-console-panel: var(--console-panel);
+  --color-console-line: var(--console-line);
+  --color-console-ink: var(--console-ink);
+  --color-console-sub: var(--console-sub);
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP',
+    'Segoe UI', 'Yu Gothic UI', Meiryo, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+  --shadow-card: var(--shadow);
+}
+
+/* ===== ベース ===== */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+button,
+[role='button'] {
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+/* iOS で入力時に拡大されないよう 16px 以上 */
+input,
+select,
+textarea {
+  font-size: 16px;
+}
+
+.en {
+  font-feature-settings: 'kern';
+  letter-spacing: 0.005em;
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* セーフエリア
+   左右（横向き時のノッチ）は body の余白で一括対応する。
+   pt-safe / pb-safe は「他の padding-top / bottom と同じ要素に付けない」こと（後勝ちで消えるため）。 */
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+.pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ===== 動き ===== */
+@keyframes pump-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-pump {
+  animation: pump-spin 1.6s linear infinite;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-pop {
+  animation: pop-in 220ms ease-out both;
+}
+
+@keyframes alarm-blink {
+  50% {
+    opacity: 0.35;
+  }
+}
+.animate-alarm {
+  animation: alarm-blink 0.9s steps(2, start) infinite;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+.animate-wave {
+  animation: wave 0.9s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* タブバー・下部固定パネルのぶんの余白 */
+.pb-tabbar {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 6.5rem);
+}
+.pb-safe-plus {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 1.5rem);
+}
+.bottom-safe {
+  bottom: env(safe-area-inset-bottom);
+}
+
+/* ヒーロー（ホームの見出し）: ネイビー → ティール */
+.hero-grad {
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgb(18 181 166 / 55%) 0%, transparent 60%),
+    linear-gradient(160deg, #0b1f3a 0%, #0d2d4f 55%, #0b4a55 100%);
+}
+
+/* 回路マップの縦線（送血の赤 → 脱血の青） */
+.circuit-rail {
+  background: linear-gradient(180deg, var(--art) 0%, #b04ad0 50%, var(--ven) 100%);
+}
+
+/* シミュレーターのコンソール */
+.console {
+  background: var(--console-bg);
+  color: var(--console-ink);
+}
+.seg {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 12px currentColor;
+}

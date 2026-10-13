@@ -1,0 +1,11 @@
+.DS_Store
+node_modules
+node_modules.nosync
+app/dist
+app/dev-dist
+*.log
+# アイコン生成時の作業ログ・報告メモ（ローカルのパスを含むので公開しない）
+design/icon/codex-report.md
+.vite
+coverage
+.claude/
