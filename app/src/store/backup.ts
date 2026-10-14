@@ -5,6 +5,7 @@
 import type { ProgressData, SimMode } from './progress'
 import type { SettingsData } from './settings'
 import type { SrsItem } from '../engine/srs'
+import { MODE_META } from '../engine/sim'
 
 type Obj = Record<string, unknown>
 
@@ -16,7 +17,7 @@ const isBool = (v: unknown): v is boolean => typeof v === 'boolean'
 /** YYYY-MM-DD（未記録は空文字） */
 const isDay = (v: unknown): v is string => isStr(v) && (v === '' || /^\d{4}-\d{2}-\d{2}$/.test(v))
 
-const SIM_MODES: readonly SimMode[] = ['guided', 'standard', 'real']
+const SIM_MODES = Object.keys(MODE_META) as readonly SimMode[]
 const COUNTER_KEYS = ['plays', 'spoken', 'closedLoop', 'numbersRight', 'reviewDone', 'drills', 'sims', 'nightOwl'] as const
 
 /** 値がすべて条件を満たすオブジェクトか */

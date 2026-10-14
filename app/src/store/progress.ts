@@ -5,9 +5,11 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 import { grade, introduce, today, addDays, type SrsItem } from '../engine/srs'
 import { DAILY_GOAL_DEFAULT, XP } from '../engine/xp'
 import { evaluateBadges } from '../engine/badges'
+import type { SimMode } from '../engine/sim'
 import { notify } from './ui'
 
-export type SimMode = 'guided' | 'standard' | 'real'
+// モードの定義は engine/sim.ts に1つだけ置く（記録・設定・バックアップの検証はここから参照）
+export type { SimMode }
 
 export interface Counters {
   plays: number

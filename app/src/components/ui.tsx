@@ -84,18 +84,21 @@ export function Segmented<T extends string>({
   options,
   className = '',
   dark = false,
+  cols,
 }: {
   value: T
   onChange: (v: T) => void
   options: { value: T; label: ReactNode }[]
   className?: string
   dark?: boolean
+  /** 1行に並べる数（省略時は全部を1行）。選択肢が多くて文字が折り返すときに段を分ける */
+  cols?: number
 }) {
   return (
     <div
       role="tablist"
       className={`grid gap-1 rounded-xl p-1 ${dark ? 'bg-white/10' : 'bg-card-2 border border-line'} ${className}`}
-      style={{ gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))` }}
+      style={{ gridTemplateColumns: `repeat(${cols ?? options.length}, minmax(0, 1fr))` }}
     >
       {options.map((o) => {
         const on = o.value === value

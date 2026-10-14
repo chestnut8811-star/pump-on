@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation, useParams, useSearch } from 'wouter'
-import { X, RotateCcw, ClipboardList, Check, ChevronRight, Volume2, Timer, Trophy, ArrowLeft } from 'lucide-react'
+import { X, RotateCcw, ClipboardList, Check, ChevronRight, Volume2, Timer, Trophy, ArrowLeft, Pause, Play, Lightbulb, Headphones } from 'lucide-react'
 import { CASE_BY_ID, PHASE_BY_ID, PHRASE_BY_ID } from '../content'
 import type { Beat, DialogueLine, PhaseId, SimTask } from '../content/types'
 import { ROLES } from '../content/roles'
@@ -10,7 +10,7 @@ import { AudioButton, useSpeak, Wave } from '../components/audio'
 import { RoleAvatar, NoteList, RegisterTag } from '../components/content'
 import { PumpRotor } from '../components/brand'
 import { Button, Segmented } from '../components/ui'
-import { MODE_META, clockAt, hudAt, phaseRange, scoreRun, timeLimitFor, type SimMode, type TaskResult, type SimScore } from '../engine/sim'
+import { MODE_META, autoTurn, clockAt, hudAt, phaseRange, scoreRun, timeLimitFor, type SimMode, type TaskResult, type SimScore } from '../engine/sim'
 import { useProgress } from '../store/progress'
 import { useSettings } from '../store/settings'
 import { XP } from '../engine/xp'
@@ -23,10 +23,13 @@ import NotFound from './NotFound'
 type LogEntry =
   | { k: 'narr'; text: string }
   | { k: 'line'; line: DialogueLine; beat: number; idx: number }
-  | { k: 'mine'; text: string; ok: boolean | null }
-  | { k: 'fb'; beat: number; ok: boolean; timedOut: boolean; why: string; model?: string; modelJa?: string; modelTts?: string; task: SimTask; score?: number }
+  | { k: 'mine'; text: string; ok: boolean | null; ja?: string }
+  // auto: フルオートで流した課題の解説（見出しは「ポイント」、設問も表示する）
+  | { k: 'fb'; beat: number; ok: boolean; timedOut: boolean; why: string; model?: string; modelJa?: string; modelTts?: string; task: SimTask; score?: number; auto?: boolean }
 
 type Stage = 'intro' | 'lines' | 'task' | 'resolved' | 'idle' | 'done'
+
+const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 interface WakeLockLike {
   release: () => Promise<void>
@@ -64,11 +67,15 @@ export default function SimPlay() {
   const [options, setOptions] = useState<number[]>([])
   const [finalScore, setFinalScore] = useState<SimScore | null>(null)
   const [confirmExit, setConfirmExit] = useState(false)
+  /** フルオートの一時停止中 */
+  const [paused, setPaused] = useState(false)
   const taskStart = useRef(0)
   const runId = useRef(0)
   const resolvedRef = useRef(false)
   const bottomRef = useRef<HTMLDivElement>(null)
   const wake = useRef<WakeLockLike | null>(null)
+  /** フルオートの、今の場面の進み具合（一時停止からの再開に使う）。段階 1=相手の発話 2=あなたの番 3=課題のあとの発話 */
+  const autoPos = useRef({ started: 0, done: 0 })
   const { playAll, play, stop, playingKey } = useSpeak()
 
   const recordSim = useProgress((s) => s.recordSim)
@@ -79,6 +86,7 @@ export default function SimPlay() {
   const setLast = useProgress((s) => s.setLast)
 
   const meta = MODE_META[mode]
+  const auto = mode === 'auto'
   const beat: Beat | undefined = c?.beats[beatIdx]
   const hud = c ? hudAt(c, stage === 'intro' ? range[0] - 1 : beatIdx) : null
   const clock = c ? clockAt(c, stage === 'intro' ? range[0] : beatIdx) : null
@@ -98,6 +106,19 @@ export default function SimPlay() {
     },
     [],
   )
+
+  // フルオート中にアプリを離れたら（画面ロック・ほかのアプリへ）一時停止する。戻ったら「再開」で続きから
+  useEffect(() => {
+    if (mode !== 'auto') return
+    const onVisibility = () => {
+      if (!document.hidden) return
+      runId.current++
+      stop()
+      setPaused(true)
+    }
+    document.addEventListener('visibilitychange', onVisibility)
+    return () => document.removeEventListener('visibilitychange', onVisibility)
+  }, [mode, stop])
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
@@ -173,6 +194,15 @@ export default function SimPlay() {
     [c, mode, orNoise, playLines],
   )
 
+  /** 画面を点けたままにする（対応する端末のみ）。アプリを離れると外れるので、フルオートの再開時にも取り直す */
+  function keepAwake() {
+    const nav = navigator as Navigator & { wakeLock?: { request: (t: 'screen') => Promise<WakeLockLike> } }
+    nav.wakeLock
+      ?.request('screen')
+      .then((w) => (wake.current = w))
+      .catch(() => undefined)
+  }
+
   function start() {
     unlockSpeech()
     unlockAudio()
@@ -182,12 +212,112 @@ export default function SimPlay() {
     setRevealed(new Set())
     setResolvedBeats(new Set())
     setFinalScore(null)
-    const nav = navigator as Navigator & { wakeLock?: { request: (t: 'screen') => Promise<WakeLockLike> } }
-    nav.wakeLock
-      ?.request('screen')
-      .then((w) => (wake.current = w))
-      .catch(() => undefined)
-    void runBeat(range[0])
+    setPaused(false)
+    keepAwake()
+    if (mode === 'auto') void runAuto(range[0])
+    else void runBeat(range[0])
+  }
+
+  // ===== フルオート =====
+  /**
+   * 場面 i を流す。課題では止まらず、お手本の答えを「あなた」の発話として流して次の場面へ進む。
+   * resume は一時停止からの再開: 表示済みの行は足さず、途中だった段階から読み直す
+   */
+  async function runAuto(i: number, resume = false) {
+    if (!c) return
+    const my = ++runId.current
+    const alive = () => my === runId.current
+    const b = c.beats[i]
+    if (!resume) {
+      autoPos.current = { started: 0, done: 0 }
+      setBeatIdx(i)
+      if (b.narration) setLog((l) => [...l, { k: 'narr', text: b.narration! }])
+      if (b.hud?.alarm) sfx.alarm()
+    }
+    const pos = autoPos.current
+    const addLines = (lines: DialogueLine[]) => setLog((l) => [...l, ...lines.map((line, idx): LogEntry => ({ k: 'line', line, beat: i, idx }))])
+
+    // 1. 相手の発話
+    if (b.lines?.length && pos.done < 1) {
+      setStage('lines')
+      await wait(450)
+      if (!alive()) return
+      if (pos.started < 1) {
+        pos.started = 1
+        addLines(b.lines)
+      }
+      await playLines(i, b.lines, false)
+      if (!alive()) return
+    }
+    pos.done = Math.max(pos.done, 1)
+
+    // 2. あなたの番（お手本の答えを流す。数値の聞き取りは答えを示すだけ）
+    const task = b.task
+    if (task && pos.done < 2) {
+      const turn = autoTurn(task)
+      if (pos.started < 2) {
+        pos.started = 2
+        setLog((l) => [
+          ...l,
+          ...(turn.say ? [{ k: 'mine', text: turn.say, ja: turn.sayJa, ok: null } as LogEntry] : []),
+          { k: 'fb', beat: i, ok: true, timedOut: false, why: turn.why, task, auto: true },
+        ])
+      }
+      setStage('resolved')
+      await wait(turn.say ? 400 : 1500)
+      if (!alive()) return
+      if (turn.say) {
+        await play(`sim:model:${b.id}`, { text: turn.say, role: 'perfusionist', tts: turn.sayTts }, meta.rate)
+        if (!alive()) return
+      }
+    }
+    pos.done = Math.max(pos.done, 2)
+
+    // 3. 課題のあとの発話（相手の了解など）
+    if (b.after?.length && pos.done < 3) {
+      if (pos.started < 3) {
+        pos.started = 3
+        addLines(b.after)
+      }
+      await playLines(i, b.after, false)
+      if (!alive()) return
+    }
+    pos.done = 3
+    setStage('idle')
+    await wait(1000)
+    if (!alive()) return
+    if (i + 1 >= range[1]) finishAuto()
+    else void runAuto(i + 1)
+  }
+
+  function pauseAuto() {
+    runId.current++
+    stop()
+    setPaused(true)
+  }
+
+  function resumeAuto() {
+    setPaused(false)
+    unlockSpeech()
+    keepAwake()
+    void runAuto(beatIdx, true)
+  }
+
+  /** フルオートの終わり。採点・記録・XP はつけない */
+  function finishAuto() {
+    runId.current++
+    stopAmbient()
+    void wake.current?.release().catch(() => undefined)
+    setStage('done')
+    sfx.levelUp()
+  }
+
+  /** 中断して一覧へ */
+  function leave() {
+    runId.current++
+    stopSpeech()
+    stopAmbient()
+    navigate('/sim')
   }
 
   /** score は発話を自動判定したときの点数（フィードバックの見出しに使う） */
@@ -296,6 +426,7 @@ export default function SimPlay() {
           <p className="mt-5 text-xs font-bold text-console-sub">モード</p>
           <Segmented
             dark
+            cols={2}
             className="mt-1.5"
             value={mode}
             onChange={setMode}
@@ -319,6 +450,40 @@ export default function SimPlay() {
             Pump On !
           </button>
           <p className="mt-2 text-center text-[11px] text-console-sub">音声が流れます。消音スイッチと音量を確認してください。</p>
+        </main>
+      </div>
+    )
+  }
+
+  // ===== フルオートの終わり（採点なし） =====
+  if (stage === 'done' && auto) {
+    return (
+      <div className="console min-h-full">
+        <main className="pt-safe pb-safe-plus mx-auto max-w-2xl px-4">
+          <div className="animate-pop pt-8 text-center">
+            <Headphones className="mx-auto text-[var(--seg-flow)]" size={34} />
+            <p className="mt-2 text-sm text-console-sub">
+              {c.titleJa}
+              {phaseParam ? `（${PHASE_BY_ID[phaseParam].titleJa}）` : ''}
+            </p>
+            <p className="mt-2 text-xl font-bold">最後まで再生しました</p>
+            <p className="mt-2 text-xs leading-relaxed text-console-sub">
+              フルオートは採点・記録をしません。自分で答える練習は、「もう一度」からモードを切り替えて始めてください。
+            </p>
+          </div>
+          <div className="mt-6 grid grid-cols-2 gap-2">
+            <Button variant="secondary" onClick={() => navigate('/sim')}>
+              一覧へ
+            </Button>
+            <Button
+              onClick={() => {
+                setStage('intro')
+                setBeatIdx(range[0])
+              }}
+            >
+              <RotateCcw size={16} /> もう一度
+            </Button>
+          </div>
         </main>
       </div>
     )
@@ -397,15 +562,33 @@ export default function SimPlay() {
       <div className="pt-safe sticky top-0 z-20 bg-[var(--console-bg)]/95 backdrop-blur">
         <div className="mx-auto max-w-2xl px-3 pb-2">
           <div className="flex items-center gap-2 py-1.5">
-            <button type="button" aria-label="中断" onClick={() => setConfirmExit(true)} className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10">
+            {/* フルオートは失う結果がないので、確かめずに一覧へ戻る */}
+            <button
+              type="button"
+              aria-label="中断"
+              onClick={() => (auto ? leave() : setConfirmExit(true))}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10"
+            >
               <X size={20} />
             </button>
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-bold">{c.titleJa}</p>
               <p className="text-[11px] text-console-sub">
-                {MODE_META[mode].label}・課題 {Math.min(doneTasks + (stage === 'task' ? 1 : 0), totalTasks)}/{totalTasks}
+                {auto
+                  ? `${MODE_META[mode].label}・場面 ${beatIdx - range[0] + 1}/${range[1] - range[0]}`
+                  : `${MODE_META[mode].label}・課題 ${Math.min(doneTasks + (stage === 'task' ? 1 : 0), totalTasks)}/${totalTasks}`}
               </p>
             </div>
+            {auto && (
+              <button
+                type="button"
+                onClick={paused ? resumeAuto : pauseAuto}
+                className="inline-flex h-11 items-center gap-1 rounded-full bg-white/10 px-3.5 text-xs font-bold"
+              >
+                {paused ? <Play size={16} /> : <Pause size={16} />}
+                {paused ? '再開' : '一時停止'}
+              </button>
+            )}
             {canReplay && (
               <button
                 type="button"
@@ -430,17 +613,23 @@ export default function SimPlay() {
             <li key={i}>
               <LogView
                 e={e}
-                showEn={e.k !== 'line' || mode === 'guided' || (mode === 'standard' ? revealed.has(lineKey(e.beat, e.idx)) : resolvedBeats.has(e.beat))}
-                showJa={e.k !== 'line' || mode === 'guided' || resolvedBeats.has(e.beat)}
+                showEn={e.k !== 'line' || mode === 'guided' || auto || (mode === 'standard' ? revealed.has(lineKey(e.beat, e.idx)) : resolvedBeats.has(e.beat))}
+                showJa={e.k !== 'line' || mode === 'guided' || auto || resolvedBeats.has(e.beat)}
                 speaking={speaking}
               />
             </li>
           ))}
         </ol>
 
-        {stage === 'lines' && (
+        {stage === 'lines' && !paused && (
           <p className="mt-3 flex items-center gap-2 text-xs text-console-sub">
             <Wave /> 交信中…
+          </p>
+        )}
+
+        {auto && paused && (
+          <p className="mt-3 flex items-center gap-2 text-xs text-console-sub">
+            <Pause size={14} /> 一時停止中 — 上の「再開」で、この場面の続きから流れます
           </p>
         )}
 
@@ -515,7 +704,7 @@ export default function SimPlay() {
           </div>
         )}
 
-        {(stage === 'resolved' || stage === 'idle') && (
+        {!auto && (stage === 'resolved' || stage === 'idle') && (
           <button
             type="button"
             onClick={next}
@@ -536,15 +725,7 @@ export default function SimPlay() {
               <Button variant="secondary" onClick={() => setConfirmExit(false)}>
                 続ける
               </Button>
-              <Button
-                variant="danger"
-                onClick={() => {
-                  runId.current++
-                  stopSpeech()
-                  stopAmbient()
-                  navigate('/sim')
-                }}
-              >
+              <Button variant="danger" onClick={leave}>
                 中断する
               </Button>
             </div>
@@ -557,6 +738,7 @@ export default function SimPlay() {
 
 /** フィードバックの見出し。選択の不正解は「ちがいます」、発話は点数で「おしい」とそれ以外を分ける */
 function fbLabel(e: Extract<LogEntry, { k: 'fb' }>): string {
+  if (e.auto) return 'ポイント'
   if (e.ok) return 'Good!'
   if (e.timedOut) return '時間切れ'
   if (e.task.kind !== 'speak') return 'ちがいます'
@@ -601,6 +783,7 @@ function LogView({ e, showEn, showJa, speaking }: { e: LogEntry; showEn: boolean
         <div className={`max-w-[85%] rounded-2xl rounded-tr-md px-3 py-2 ${e.ok === false ? 'bg-[var(--seg-map)]/20' : 'bg-[var(--seg-flow)]/15'}`}>
           <p className="text-right text-[11px] font-bold text-[var(--seg-flow)]">あなた</p>
           <p className="en text-[16px] font-semibold leading-snug">{e.text}</p>
+          {e.ja && <p className="mt-0.5 text-xs text-console-sub">{e.ja}</p>}
         </div>
       </div>
     )
@@ -610,9 +793,11 @@ function LogView({ e, showEn, showJa, speaking }: { e: LogEntry; showEn: boolean
   return (
     <div className={`animate-pop rounded-2xl border p-3.5 ${e.ok ? 'border-[var(--seg-flow)]/50 bg-[var(--seg-flow)]/8' : 'border-[var(--seg-map)]/50 bg-[var(--seg-map)]/8'}`}>
       <p className={`flex items-center gap-1.5 font-extrabold ${e.ok ? 'text-[var(--seg-flow)]' : 'text-[var(--seg-map)]'}`}>
-        {e.ok ? <Check size={18} /> : <X size={18} />}
+        {e.auto ? <Lightbulb size={18} /> : e.ok ? <Check size={18} /> : <X size={18} />}
         {fbLabel(e)}
       </p>
+      {/* フルオートは課題の画面を出さないので、何を求められた場面かをここに示す */}
+      {e.auto && <p className="mt-1 text-[13px] font-bold leading-relaxed text-console-ink">{t.prompt}</p>}
       {e.why && <p className="mt-1 text-[13px] leading-relaxed text-console-ink/90">{e.why}</p>}
       {t.kind === 'catch' && (
         <p className="mt-1 text-[13px]">

@@ -174,7 +174,12 @@ export default function Settings() {
         <Section title="シミュレーター・発話">
           <Card className="space-y-1 p-4">
             <p className="mb-1.5 text-sm font-semibold">既定のモード</p>
-            <Segmented<SimMode> value={st.simMode} onChange={(v) => st.set('simMode', v)} options={(Object.keys(MODE_META) as SimMode[]).map((m) => ({ value: m, label: MODE_META[m].label }))} />
+            <Segmented<SimMode>
+              cols={2}
+              value={st.simMode}
+              onChange={(v) => st.set('simMode', v)}
+              options={(Object.keys(MODE_META) as SimMode[]).map((m) => ({ value: m, label: MODE_META[m].label }))}
+            />
             <Toggle
               checked={st.orNoise}
               onChange={(v) => st.set('orNoise', v)}

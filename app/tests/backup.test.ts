@@ -34,6 +34,10 @@ describe('学習記録の読み込み', () => {
     const b = parseBackup({ app: 'pump-on', version: 1, progress: validProgress(), settings: { theme: 'neon', rate: 9, sfx: false, extra: 1 } })
     expect(b!.settings).toEqual({ rate: 1.3, sfx: false })
   })
+  it('既定のモードがフルオートの設定も読める（知らないモードは捨てる）', () => {
+    expect(parseBackup({ app: 'pump-on', version: 1, progress: validProgress(), settings: { simMode: 'auto' } })!.settings).toEqual({ simMode: 'auto' })
+    expect(parseBackup({ app: 'pump-on', version: 1, progress: validProgress(), settings: { simMode: 'turbo' } })!.settings).toEqual({})
+  })
   it('古い書き出しに無いカウンターは 0 で補う', () => {
     const old = validProgress() as Record<string, unknown>
     old.counters = { plays: 1 }

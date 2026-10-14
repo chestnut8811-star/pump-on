@@ -39,7 +39,13 @@ export default function SimList() {
         </Card>
 
         <Section title="モード">
-          <Segmented value={mode} onChange={(m: SimMode) => set('simMode', m)} options={(Object.keys(MODE_META) as SimMode[]).map((m) => ({ value: m, label: MODE_META[m].label }))} />
+          {/* 4つを1行に並べると「スタンダード」が折り返すので2段にする */}
+          <Segmented
+            cols={2}
+            value={mode}
+            onChange={(m: SimMode) => set('simMode', m)}
+            options={(Object.keys(MODE_META) as SimMode[]).map((m) => ({ value: m, label: MODE_META[m].label }))}
+          />
           <p className="mt-2 px-1 text-xs text-sub">{MODE_META[mode].desc}</p>
         </Section>
 

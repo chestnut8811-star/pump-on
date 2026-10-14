@@ -2,12 +2,27 @@
 
 import type { Beat, HudState, PhaseId, SimCase, SimTask } from '../content/types'
 
-export type SimMode = 'guided' | 'standard' | 'real'
+/** auto（フルオート）は課題で止まらず、お手本の答えを流して最後まで自動で進む。採点・記録はしない */
+export type SimMode = 'guided' | 'standard' | 'real' | 'auto'
 
 export const MODE_META: Record<SimMode, { label: string; desc: string; rate: number; timeLimit: number | null; replays: number }> = {
   guided: { label: 'ガイド', desc: '英語字幕と日本語訳つき・ゆっくり・時間制限なし', rate: 0.85, timeLimit: null, replays: Infinity },
   standard: { label: 'スタンダード', desc: '英語字幕は音声のあと・日本語は答えたあと・通常速度', rate: 1, timeLimit: null, replays: Infinity },
   real: { label: 'リアルOR', desc: '音声だけ・聞き直し1回・時間制限あり', rate: 1.05, timeLimit: 15, replays: 1 },
+  auto: {
+    label: 'フルオート',
+    desc: '操作なしで最後まで自動で進みます。あなたのセリフもお手本の声で流れます（英語字幕と日本語訳つき・採点と記録なし）',
+    rate: 1,
+    timeLimit: null,
+    replays: 0,
+  },
+}
+
+/** フルオートで「あなた」の番に流す内容。選択の課題は正解の英語、発話の課題はお手本。数値の聞き取りは答えを示すだけ */
+export function autoTurn(task: SimTask): { say?: string; sayJa?: string; sayTts?: string; why: string } {
+  if (task.kind === 'respond') return { say: task.model, sayJa: task.modelJa, sayTts: task.modelTts, why: task.options.find((o) => o.correct)?.why ?? '' }
+  if (task.kind === 'speak') return { say: task.target, sayTts: task.tts, why: '' }
+  return { why: task.why ?? '' }
 }
 
 /** 課題の制限時間（秒）。リアルORのみ */

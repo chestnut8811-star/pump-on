@@ -6,6 +6,7 @@ import { SOURCES } from '../src/content/sources'
 import type { HudState, PhaseId } from '../src/content/types'
 import { canonicalTokens, matchUtterance } from '../src/engine/match'
 import { catchLabel } from '../src/engine/drills'
+import { autoTurn } from '../src/engine/sim'
 import { FLOW_SCRIPT } from '../src/content/flow-script'
 
 const PREFIX: Record<PhaseId, string> = {
@@ -155,6 +156,27 @@ describe('症例（シミュレーター）', () => {
         if (t.kind === 'speak') {
           expect(t.keywords.length, `${where}: keywords がない`).toBeGreaterThan(0)
           for (const k of t.keywords) expect(containsTokens(t.target, k), `${where}: keyword「${k}」が target にない`).toBe(true)
+        }
+      }
+    }
+  })
+
+  it('フルオート: どの課題でも「あなたの番」に流す英語（数値の聞き取りは示す答え）がそろう', () => {
+    for (const c of CASES) {
+      for (const b of c.beats) {
+        const t = b.task
+        if (!t) continue
+        const where = `${c.id}/${b.id}`
+        const turn = autoTurn(t)
+        if (t.kind === 'catch') {
+          expect(turn.say, where).toBeUndefined()
+          continue
+        }
+        expect(turn.say, `${where}: 流す英語がない`).toBeTruthy()
+        expect(JA.test(turn.say ?? ''), `${where}: 流す英語に日本語`).toBe(false)
+        if (t.kind === 'respond') {
+          expect(JA.test(turn.sayJa ?? ''), `${where}: 訳がない`).toBe(true)
+          expect(turn.why, `${where}: 正解の理由`).toBe(t.options.find((o) => o.correct)?.why)
         }
       }
     }
