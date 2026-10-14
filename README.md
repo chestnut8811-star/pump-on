@@ -62,4 +62,4 @@ npm run review-sheet  # 監修用一覧 docs/review/content-review.csv（Excel �
 
 ## 根拠
 
-アプリ内「記録 → このアプリについて」に出典一覧があります。調査の詳細は [docs/research/](docs/research/)。
+アプリ内「記録・設定」タブの「このアプリについて」に出典一覧があります。調査の詳細は [docs/research/](docs/research/)。

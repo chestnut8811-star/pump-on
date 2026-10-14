@@ -112,7 +112,7 @@ export default function Onboarding() {
                   <Check size={16} /> “Pump on! Going on bypass.”
                 </p>
               )}
-              <p className="mt-6 text-xs leading-relaxed text-white/55">声の種類と速さは「記録 → 設定」でいつでも変えられます。</p>
+              <p className="mt-6 text-xs leading-relaxed text-white/55">声の種類と速さは、下の「記録・設定」タブからいつでも変えられます。</p>
             </div>
           )}
 

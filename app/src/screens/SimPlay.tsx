@@ -436,11 +436,6 @@ export default function SimPlay() {
           <p className="mt-4 text-[11px] leading-relaxed text-console-sub">
             症例・会話・モニターの数値はすべて教育用の架空の例です（AI下書き・臨床未監修）。実際の管理は施設のプロトコルと担当医の指示に従ってください。
           </p>
-          {c.notes?.length ? (
-            <div className="mt-3 rounded-xl bg-console-panel p-3">
-              <NoteList dark notes={c.notes} />
-            </div>
-          ) : null}
           <button
             type="button"
             onClick={start}
@@ -450,6 +445,12 @@ export default function SimPlay() {
             Pump On !
           </button>
           <p className="mt-2 text-center text-[11px] text-console-sub">音声が流れます。消音スイッチと音量を確認してください。</p>
+          {/* 症例の注記（施設差・要確認）は開始ボタンの下に置き、ボタンまでのスクロールを短くする */}
+          {c.notes?.length ? (
+            <div className="mt-6 rounded-xl bg-console-panel p-3">
+              <NoteList dark notes={c.notes} />
+            </div>
+          ) : null}
         </main>
       </div>
     )
